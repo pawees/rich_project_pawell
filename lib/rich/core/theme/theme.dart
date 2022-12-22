@@ -3,7 +3,7 @@ import 'package:rich_project_pawell/rich/core/theme/elevated_button.dart';
 import 'package:rich_project_pawell/rich/core/theme/text_theme.dart';
 
  class DLiteTheme {
-   
+
    DLiteTheme._();
 
    static ThemeData themeLight = ThemeData(
