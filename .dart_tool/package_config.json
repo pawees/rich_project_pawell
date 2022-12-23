@@ -104,6 +104,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "get",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/get-4.6.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "google_fonts",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-3.0.1",
       "packageUri": "lib/",
@@ -296,7 +302,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-12-22T08:52:20.560457Z",
+  "generated": "2022-12-23T13:16:53.588476Z",
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }

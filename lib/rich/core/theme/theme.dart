@@ -7,6 +7,7 @@ import 'package:rich_project_pawell/rich/core/theme/text_theme.dart';
    DLiteTheme._();
 
    static ThemeData themeLight = ThemeData(
+     backgroundColor: Colors.white,
      brightness: Brightness.light,
      textTheme: MyTextTheme.lightText,
      elevatedButtonTheme: MyElevatedButtonTheme.lightBtn,

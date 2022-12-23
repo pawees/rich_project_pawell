@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rich_project_pawell/rich/core/theme/theme.dart';
+import 'package:rich_project_pawell/rich/presentation/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: DLiteTheme.themeLight,
       darkTheme: DLiteTheme.themeDark,
       themeMode: ThemeMode.system,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: SplashScreen(),
     );
   }
 }
