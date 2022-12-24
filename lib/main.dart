@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:rich_project_pawell/rich/core/routes/navigation.dart';
 import 'package:rich_project_pawell/rich/core/theme/theme.dart';
 import 'package:rich_project_pawell/rich/domain/di_container.dart';
 import 'package:rich_project_pawell/rich/presentation/splash/splash_screen.dart';
@@ -6,11 +9,14 @@ import 'package:rich_project_pawell/rich/presentation/splash/splash_screen.dart'
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   inicialAdditionals();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final mainNavigation = Get.find<MainNavigation>();
+
 
   // This widget is the root of your application.
   @override
@@ -20,10 +26,13 @@ class MyApp extends StatelessWidget {
       theme: DLiteTheme.themeLight,
       darkTheme: DLiteTheme.themeDark,
       themeMode: ThemeMode.system,
-      home: SplashScreen(),
+      routes: mainNavigation.routes,
+      initialRoute: MainNavigationRouteNames.auth,
     );
   }
 }
+
+
 
 
 
