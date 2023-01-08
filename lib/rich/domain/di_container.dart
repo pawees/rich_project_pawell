@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:rich_project_pawell/rich/data/auth_service_impl.dart';
+import 'package:rich_project_pawell/rich/data/sevices/auth_service_impl.dart';
 import 'package:rich_project_pawell/rich/domain/screen_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

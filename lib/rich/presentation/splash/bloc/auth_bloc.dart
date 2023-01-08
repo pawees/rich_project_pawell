@@ -7,7 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/routes/navigation.dart';
-import '../../../data/auth_service_impl.dart';
+import '../../../data/sevices/auth_service_impl.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
