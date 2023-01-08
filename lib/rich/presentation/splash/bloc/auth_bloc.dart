@@ -31,7 +31,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final nextScreen = isAuth ? MainNavigationRouteNames.home
         : MainNavigationRouteNames.auth;
     emit(CheckAuthState(nextScreen));
-    //TODO can i call navigator from bloc
 
 
 

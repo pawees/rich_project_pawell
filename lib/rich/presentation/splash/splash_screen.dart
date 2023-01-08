@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:rich_project_pawell/rich/core/constants/images.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
-import 'package:rich_project_pawell/rich/presentation/splash/splash_screen_controller.dart';
+import 'package:rich_project_pawell/rich/presentation/splash/controller/splash_screen_controller.dart';
 
 
 class SplashScreen extends StatelessWidget {

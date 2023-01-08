@@ -10,6 +10,9 @@ void inicialAdditionals () {
   Get.put<MainNavigation>(MainNavigation());
   Get.put<AuthService>(AuthService());
 
+  ///contants
+  //TODO add Images and Text classes.
+
   //Get.put<NavigationRouters>(NavigationRoutes);
   // Get.put<AllBlocs>(AllBlocs);
   // Get.put<FirebaseMessaging>(FirebaseInstance);
