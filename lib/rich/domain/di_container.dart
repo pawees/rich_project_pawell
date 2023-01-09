@@ -4,11 +4,13 @@ import 'package:rich_project_pawell/rich/domain/screen_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/routes/navigation.dart';
+import '../data/sevices/firebase_push_notification_impl.dart';
 
 void inicialAdditionals () {
   Get.put<ScreenFactory>(ScreenFactory());
   Get.put<MainNavigation>(MainNavigation());
   Get.put<AuthService>(AuthService());
+  Get.put<PushNotificationService>(PushNotificationService());
 
   ///contants
   //TODO add Images and Text classes.
