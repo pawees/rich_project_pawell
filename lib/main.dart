@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
-import 'package:rich_project_pawell/rich/core/routes/navigation.dart';
 import 'package:rich_project_pawell/rich/core/theme/theme.dart';
 import 'package:rich_project_pawell/rich/domain/di_container.dart';
-import 'package:rich_project_pawell/rich/presentation/splash/splash_screen.dart';
+import 'package:rich_project_pawell/rich/feautures/navigation/domain/entity/main_navigation_route_names.dart';
+import 'package:rich_project_pawell/rich/feautures/navigation/service/main_navigation.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

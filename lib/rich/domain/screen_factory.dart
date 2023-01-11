@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rich_project_pawell/rich/presentation/splash/splash_screen.dart';
-import '../presentation/splash/bloc/auth_bloc.dart';
+import 'package:rich_project_pawell/rich/feautures/splash_screen/presentation/splash_screen.dart';
+import '../feautures/splash_screen/presentation/bloc/auth_bloc.dart';
+
 
 class ScreenFactory {
 
