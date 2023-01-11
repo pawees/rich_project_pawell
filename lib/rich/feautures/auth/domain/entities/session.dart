@@ -7,5 +7,5 @@ class Session {
   AuthStatus get authStatus => auth;
   set authStatus(AuthStatus val) => auth = val;
 
-  
+
 }

@@ -6,13 +6,9 @@ class SessionStorage {
 
   static final _storage = Get.find<SharedPreferencesStorage>();
 
-  init() {
-  //todo init fuction init in class
-    _storage.setPreferences();
-  }
 
   Future<bool> getAccessToken() =>
-      _storage.get('accessToken');
+      _storage.containsKey('accessToken');
 
 
   Future<void> setAccessToken(String key, String value) =>

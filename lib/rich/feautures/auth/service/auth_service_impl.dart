@@ -6,7 +6,6 @@ class AuthService {
   final _session = SessionStorage();
 
   checkAuth() async {
-    _session.init();
     bool result = await _session.getAccessToken();
     updateAuthStatus(result);
 

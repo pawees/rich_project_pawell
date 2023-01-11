@@ -14,4 +14,8 @@ class SplashScreenController extends GetxController {
     await Future.delayed(Duration(milliseconds: 5000));
 
   }
+
+
+
+
 }
