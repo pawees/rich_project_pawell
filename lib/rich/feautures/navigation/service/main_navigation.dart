@@ -15,6 +15,7 @@ class MainNavigation implements IMainNavigation{
     MainNavigationRouteNames.loaderWidget: (_) => _screenFactory.makeLoader(),
     MainNavigationRouteNames.auth: (_) => _screenFactory.makeAuth(),
     MainNavigationRouteNames.home: (_) => _screenFactory.makeHome(),
+    MainNavigationRouteNames.news: (_) => _screenFactory.makeNews(),
   };
 
   // Route<Object> onGenerateRoute(RouteSettings settings) {

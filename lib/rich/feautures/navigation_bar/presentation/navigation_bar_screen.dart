@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rich_project_pawell/rich/feautures/news/presentation/news_screen.dart';
 import 'controller/navigator_bar_controller.dart';
 
 
@@ -26,9 +27,9 @@ class BottomNavigation extends StatelessWidget {
           body: Obx(() => IndexedStack(
             index: navigatorBarController.tabIndex.value,
             children: const [
-              Text(''),
-              Text(''),
-              Text(''),
+              NewsScreen(),
+              Text('У'),
+              Text('Й'),
               Text(''),
             ],
           )),
