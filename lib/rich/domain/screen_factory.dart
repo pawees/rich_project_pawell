@@ -33,7 +33,7 @@ class ScreenFactory {
 
 
   Widget makeHome() {
-    return Scaffold(body: LandingPage());
+    return Scaffold(body: BottomNavigation());
   }
 
 

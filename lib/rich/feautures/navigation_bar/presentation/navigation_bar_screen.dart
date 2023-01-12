@@ -4,47 +4,8 @@ import 'controller/navigator_bar_controller.dart';
 
 
 
-// class BottomNavigation extends StatelessWidget {
-//   BottomNavigation({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GetBuilder<NavigatorBarController>(
-//       builder: (controller) {
-//         return Scaffold(
-//           body: SafeArea(
-//             child: IndexedStack(
-//               index: controller.tabIndex,
-//               children: const [
-//                 Text(''),
-//                 Text(''),
-//               ],
-//             ),
-//           ),
-//           bottomNavigationBar: BottomNavigationBar(
-//             //build items in controller
-//             items: const [
-//               BottomNavigationBarItem(
-//                 icon: Icon(Icons.home),
-//                 label: 'home',
-//               ),
-//               BottomNavigationBarItem(
-//                 icon: Icon(Icons.account_circle_outlined),
-//                 label: 'profile',
-//               ),
-//             ],
-//             unselectedFontSize: 12,
-//             currentIndex: controller.tabIndex,
-//             onTap: controller.changeTabIndex,
-//           ),
-//         );
-//       },
-//     );
-//   }
-//
-// }
+class BottomNavigation extends StatelessWidget {
 
-class LandingPage extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
@@ -53,7 +14,29 @@ class LandingPage extends StatelessWidget {
   final TextStyle selectedLabelStyle =
   TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
 
-  buildBottomNavigationMenu(context, landingPageController) {
+
+  @override
+  Widget build(BuildContext context) {
+    final NavigatorBarController navigatorBarController =
+    Get.put(NavigatorBarController(), permanent: false);
+    return SafeArea(
+        child: Scaffold(
+          bottomNavigationBar:
+          buildBottomNavigationMenu(context, navigatorBarController),
+          body: Obx(() => IndexedStack(
+            index: navigatorBarController.tabIndex.value,
+            children: const [
+              Text(''),
+              Text(''),
+              Text(''),
+              Text(''),
+            ],
+          )),
+        ));
+  }
+
+
+  buildBottomNavigationMenu(context, navigatorBarController) {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
@@ -61,8 +44,8 @@ class LandingPage extends StatelessWidget {
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
-            onTap: landingPageController.changeTabIndex,
-            currentIndex: landingPageController.tabIndex.value,
+            onTap: navigatorBarController.changeTabIndex,
+            currentIndex: navigatorBarController.tabIndex.value,
             backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
             unselectedItemColor: Colors.white.withOpacity(0.5),
             selectedItemColor: Colors.white,
@@ -72,7 +55,7 @@ class LandingPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  child: const Icon(
                     Icons.home,
                     size: 20.0,
                   ),
@@ -83,7 +66,7 @@ class LandingPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  child: const Icon(
                     Icons.search,
                     size: 20.0,
                   ),
@@ -94,7 +77,7 @@ class LandingPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  child: const Icon(
                     Icons.location_history,
                     size: 20.0,
                   ),
@@ -105,7 +88,7 @@ class LandingPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  child: const Icon(
                     Icons.settings,
                     size: 20.0,
                   ),
@@ -118,23 +101,4 @@ class LandingPage extends StatelessWidget {
         )));
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final LandingPageController landingPageController =
-    Get.put(LandingPageController(), permanent: false);
-    return SafeArea(
-        child: Scaffold(
-          bottomNavigationBar:
-          buildBottomNavigationMenu(context, landingPageController),
-          body: Obx(() => IndexedStack(
-            index: landingPageController.tabIndex.value,
-            children: [
-              Text(''),
-              Text(''),
-              Text(''),
-              Text(''),
-            ],
-          )),
-        ));
-  }
 }
