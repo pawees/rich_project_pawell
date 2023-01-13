@@ -27,7 +27,7 @@ class SplashScreen extends StatelessWidget {
               child: AnimatedOpacity(
                 opacity: splashController.animate.value ? 1 : 0,
                 duration: const Duration(milliseconds: 1600),
-                child: SplashImage.part_of_logo1,
+                child: Images.splash_part_of_logo1,
               ),
             ),
           ),
@@ -39,7 +39,7 @@ class SplashScreen extends StatelessWidget {
                 child: AnimatedOpacity(
                   opacity: splashController.animate.value ? 1 : 0,
                   duration: const Duration(milliseconds: 1600),
-                  child: SplashImage.part_of_logo2,
+                  child: Images.splash_part_of_logo2,
                 ),
 
               ),
@@ -52,7 +52,7 @@ class SplashScreen extends StatelessWidget {
                 child: AnimatedOpacity(
                   opacity: splashController.animate.value ? 1 : 0,
                   duration: const Duration(milliseconds: 1600),
-                  child: SplashImage.part_of_logo3,
+                  child: Images.splash_part_of_logo3,
                 )
               ),),
           Obx( () =>
@@ -63,7 +63,7 @@ class SplashScreen extends StatelessWidget {
                   child: AnimatedOpacity(
                     opacity: splashController.animate.value ? 1 : 0,
                     duration: const Duration(milliseconds: 1600),
-                    child: SplashImage.part_of_logo4,
+                    child: Images.splash_part_of_logo4,
                   )
               ),
           ),
@@ -75,7 +75,7 @@ class SplashScreen extends StatelessWidget {
                   child: AnimatedOpacity(
                     opacity: splashController.animate.value ? 1 : 0,
                     duration: const Duration(milliseconds: 2500),
-                    child: SplashImage.part_of_logo5,
+                    child: Images.splash_part_of_logo5,
                   )
               ),
           ),

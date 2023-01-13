@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rich_project_pawell/rich/core/constants/texts.dart';
 import 'package:rich_project_pawell/rich/feautures/news/presentation/news_screen.dart';
+import '../../../core/constants/images.dart';
 import '../../../domain/screen_factory.dart';
 import 'controller/navigator_bar_controller.dart';
 
@@ -34,6 +36,8 @@ class BottomNavigation extends StatelessWidget {
               _screenFactory.makeNews(),
               _screenFactory.makeNews(),
               _screenFactory.makeNews(),
+              _screenFactory.makeNews(),
+              _screenFactory.makeNews(),
             ],
           )),
         ));
@@ -59,45 +63,49 @@ class BottomNavigation extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child:   Icon(
-                    Icons.home,
-                    size: 20.0,
-                  ),
+                  child: Images.nav_bar_news,
                 ),
-                label: 'Home',
+                label: nb_news,
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child:   Icon(
-                    Icons.search,
-                    size: 20.0,
-                  ),
+                  child: Images.nav_bar_promo,
                 ),
-                label: 'Explore',
+                label: nb_promo,
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child:   Icon(
-                    Icons.location_history,
-                    size: 20.0,
-                  ),
+                  child: Images.nav_bar_card,
                 ),
-                label: 'Places',
+                label: nb_card,
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child:   Icon(
-                    Icons.settings,
-                    size: 20.0,
-                  ),
+                  child:   Images.nav_bar_map
                 ),
-                label: 'Settings',
+                label: nb_map,
+                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  margin: EdgeInsets.only(bottom: 7),
+                  child:   Images.nav_bar_catalog
+                ),
+                label: nb_catalog,
+                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  margin: EdgeInsets.only(bottom: 7),
+                  child:   Images.nav_bar_profiile
+                ),
+                label: nb_profile,
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
             ],

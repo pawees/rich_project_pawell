@@ -37,6 +37,8 @@ dependencies:
   shared_preferences: ^2.0.15
   json_serializable: ^6.5.4
   json_annotation: ^4.7.0
+  flutter_svg: ^1.1.0
+
 
 
 
@@ -72,6 +74,7 @@ flutter:
   assets:
     - assets/images/daor_logo_svg/
     - assets/images/dor_logo/
+    - assets/images/dor_nav_bar_png/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

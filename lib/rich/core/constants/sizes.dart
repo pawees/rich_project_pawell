@@ -8,6 +8,10 @@ class SizeConfig {
 
   static double get defaultPadding => defaultSize * 1.5;
 
+  static double? get iconSizePng => SizeConfig.defaultSize * 1.7;
+  static double? get iconSizeSvg => SizeConfig.defaultSize * 2.2;
+
+
   void init(BoxConstraints constraints, Orientation orientation) {
     screenWidth = constraints.maxWidth;
     screenHeight = constraints.maxHeight;
