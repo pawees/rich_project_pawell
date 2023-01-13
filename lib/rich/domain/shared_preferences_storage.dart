@@ -1,81 +1,72 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesStorage {
-
+  static final _sp = Get.find<SharedPreferences>();
 
   Future<bool> clear() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.clear();
+    return _sp.clear();
   }
 
   Future<bool> containsKey(String key) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.containsKey(key);
+    return _sp.containsKey(key);
   }
 
   dynamic get(String key) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.get(key);
+    return _sp.get(key);
   }
 
   Future<bool?> getBool(String key) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.getBool(key);
+    return _sp.getBool(key);
   }
 
   // double? getDouble(String key  ) async {
-  //   return  preferences.getDouble(key);
+  //   return _sp.getDouble(key);
   // }
   //
   // int? getInt(String key  ) async {
-  //   return  preferences.getInt(key);
+  //   return _sp.getInt(key);
   // }
   //
   // Set<String> getKeys(  ) async {
-  //   return  preferences.getKeys();
+  //   return _sp.getKeys();
   // }
   //
   // String? getString(String key  ) async {
-  //   return  preferences.getString(key);
+  //   return _sp.getString(key);
   // }
   //
   // List<String>? getStringList(String key  ) async {
-  //   return  preferences.getStringList(key);
+  //   return _sp.getStringList(key);
   // }
 
   Future<void> reload(  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.reload();
+    return _sp.reload();
   }
 
   Future<bool> remove(String key  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.remove(key);
+    return _sp.remove(key);
   }
 
   Future<bool> setBool(String key, bool value  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.setBool(key, value);
+    return _sp.setBool(key, value);
   }
 
   Future<bool> setDouble(String key, double value  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.setDouble(key, value);
+    return _sp.setDouble(key, value);
   }
 
   Future<bool> setInt(String key, int value  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.setInt(key, value);
+    return _sp.setInt(key, value);
   }
 
   Future<bool> setString(String key, String value  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.setString(key, value);
+    return _sp.setString(key, value);
   }
 
   Future<bool> setStringList(String key, List<String> value  ) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return  preferences.setStringList(key, value);
+    return _sp.setStringList(key, value);
   }
   
   

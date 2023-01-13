@@ -1,6 +1,6 @@
 abstract class INewsRepository {
 
-  Future<void> getNews(params);
+  Future getNews();
 
   Future<void> updateNews(params);
 

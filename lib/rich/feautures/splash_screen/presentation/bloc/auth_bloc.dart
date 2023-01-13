@@ -30,7 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> checkAuth(Emitter<AuthState> emit) async {
 
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 1));
 
     await _auth_service.checkAuth();
 

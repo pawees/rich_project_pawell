@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rich_project_pawell/rich/feautures/navigation/domain/i_main_navigation.dart';
+import 'package:rich_project_pawell/rich/feautures/news/presentation/news_screen.dart';
 import '../../../domain/screen_factory.dart';
 import '../domain/entity/main_navigation_route_names.dart';
 

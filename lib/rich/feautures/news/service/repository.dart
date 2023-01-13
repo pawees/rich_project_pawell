@@ -5,12 +5,12 @@ import '../domain/i_news_repository.dart';
 class NewsRepo implements INewsRepository {
 
   @override
-  Future<void> getNews(params) async {
+  Future getNews() async {
     _generateNews() {
-      News(id: 1, title: 'HomeRepo', text: 'Hello,world');
+      return News(id: 1, title: 'Sent From Api', text: 'Hello,world');
     }
-
-    final news = List.generate(30, (index) => _generateNews());
+    final news = List<News>.generate(20, (int index) => _generateNews());
+    return news;
   }
 
   @override

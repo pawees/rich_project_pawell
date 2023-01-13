@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rich_project_pawell/rich/feautures/news/presentation/news_screen.dart';
+import '../../../domain/screen_factory.dart';
 import 'controller/navigator_bar_controller.dart';
 
 
 
 class BottomNavigation extends StatelessWidget {
+
+  static final _screenFactory = Get.find<ScreenFactory>();
 
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
@@ -26,11 +29,11 @@ class BottomNavigation extends StatelessWidget {
           buildBottomNavigationMenu(context, navigatorBarController),
           body: Obx(() => IndexedStack(
             index: navigatorBarController.tabIndex.value,
-            children: const [
-              NewsScreen(),
-              Text('У'),
-              Text('Й'),
-              Text(''),
+            children: [
+              _screenFactory.makeNews(),
+              _screenFactory.makeNews(),
+              _screenFactory.makeNews(),
+              _screenFactory.makeNews(),
             ],
           )),
         ));
@@ -56,7 +59,7 @@ class BottomNavigation extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  child:   Icon(
                     Icons.home,
                     size: 20.0,
                   ),
@@ -67,7 +70,7 @@ class BottomNavigation extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  child:   Icon(
                     Icons.search,
                     size: 20.0,
                   ),
@@ -78,7 +81,7 @@ class BottomNavigation extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  child:   Icon(
                     Icons.location_history,
                     size: 20.0,
                   ),
@@ -89,7 +92,7 @@ class BottomNavigation extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  child:   Icon(
                     Icons.settings,
                     size: 20.0,
                   ),

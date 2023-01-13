@@ -6,10 +6,11 @@ abstract class NewsState {}
 class NewsInitial extends NewsState {}
 
 class NewsScreenState extends NewsInitial {
-  final String nextScreen;
+  final List<News> news;
 
-  NewsScreenState(this.nextScreen);
+  NewsScreenState(this.news);
+
   @override
-  List<Object> get props => [nextScreen];
+  List<Object> get props => [news,];
 
 }
