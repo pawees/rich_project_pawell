@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//todo  replace to color scheme
 class COLOR_CONST {
   static const primaryColor = Color(0xFF3ac5c9);
   static const accentTintColor = Color(0xFF7b60c4);
