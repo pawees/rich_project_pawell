@@ -7,7 +7,7 @@ class NewsRepo implements INewsRepository {
   @override
   Future getNews() async {
     _generateNews() {
-      return News(id: 1, title: 'Sent From Api', text: 'Hello,world');
+      return News(id: 1, title: 'Sent From Api', text: 'Hello,world',imageUrl: '');
     }
     final news = List<News>.generate(20, (int index) => _generateNews());
     return news;

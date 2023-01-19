@@ -37,7 +37,9 @@ dependencies:
   shared_preferences: ^2.0.15
   json_serializable: ^6.5.4
   json_annotation: ^4.7.0
+  # img workers
   flutter_svg: ^1.1.0
+  shimmer: ^2.0.0
 
 
 

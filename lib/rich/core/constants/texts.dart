@@ -7,3 +7,6 @@ String nb_card = 'Карта';
 String nb_map = 'Магазины';
 String nb_catalog = 'Каталог';
 String nb_profile = 'Профиль';
+
+///news_screen
+String news_title = 'Новости';
