@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 import 'package:rich_project_pawell/rich/domain/shared_preferences_storage.dart';
-import 'package:rich_project_pawell/rich/feautures/auth/service/auth_service_impl.dart';
+import 'package:rich_project_pawell/rich/features/auth/service/auth_service_impl.dart';
 import 'package:rich_project_pawell/rich/domain/screen_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../feautures/firebase_cloud_messaging/service/push_notification_service.dart';
-import '../feautures/navigation/service/main_navigation.dart';
-import '../feautures/news/domain/i_news_repository.dart';
-import '../feautures/news/service/mock_repository.dart';
-import '../feautures/news/service/repository.dart';
+import '../features/firebase_cloud_messaging/service/push_notification_service.dart';
+import '../features/navigation/service/main_navigation.dart';
+import '../features/news/domain/i_news_repository.dart';
+import '../features/news/service/mock_repository.dart';
+import '../features/news/service/repository.dart';
 
 
 void inicialAdditionals () {
