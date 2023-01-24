@@ -21,9 +21,9 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     final NavigatorBarController navigatorBarController =
         Get.put(NavigatorBarController(), permanent: false);
+
     return SafeArea(
         child: Scaffold(
       bottomNavigationBar:
@@ -32,9 +32,10 @@ class BottomNavigation extends StatelessWidget {
             index: navigatorBarController.tabIndex.value,
             children: [
               _screenFactory.makeNews(),
-              _screenFactory.makeNews(),
-              //_screenFactory.makePromo(),
-              _screenFactory.makeNews(),
+              //_screenFactory.makeNews(),
+              _screenFactory.makePromo(true),
+              //Container(),
+              _screenFactory.makeCard(true),
               _screenFactory.makeNews(),
               _screenFactory.makeNews(),
               _screenFactory.makeNews(),

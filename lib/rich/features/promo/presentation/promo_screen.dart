@@ -20,7 +20,7 @@ class PromoScreen extends StatelessWidget {
       physics: AlwaysScrollableScrollPhysics(),
       child: Column(
         children: [
-          appBar(news_title),
+          appBar(promotions_title),
           _News(),
         ],
       ),

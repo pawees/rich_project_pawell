@@ -5,7 +5,6 @@ abstract class MainNavigationRouteNames {
   static const profile = '/profile';
   static const news = '/news';
   static const promo = '/promo';
-  static const promo_screen = '/promo_screen';
 
 // static const movieDetails = '/main_screen/movie_details';
 // static const movieTrailerWidget = '/main_screen/movie_details/trailer';

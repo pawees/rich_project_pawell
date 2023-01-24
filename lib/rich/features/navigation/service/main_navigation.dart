@@ -18,7 +18,6 @@ class MainNavigation implements IMainNavigation{
     MainNavigationRouteNames.home: (_) => _screenFactory.makeHome(),
     MainNavigationRouteNames.news: (_) => _screenFactory.makeNews(),
     MainNavigationRouteNames.promo: (_) => _screenFactory.makePromo(),
-    MainNavigationRouteNames.promo_screen: (_) => _screenFactory.screenPromo(),
   };
 
   // Route<Object> onGenerateRoute(RouteSettings settings) {

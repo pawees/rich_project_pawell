@@ -10,3 +10,7 @@ String nb_profile = 'Профиль';
 
 ///news_screen
 String news_title = 'Новости';
+
+
+///promo_screen
+String promotions_title = 'Акции';
