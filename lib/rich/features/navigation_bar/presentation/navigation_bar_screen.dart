@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
 import 'package:rich_project_pawell/rich/features/news/presentation/news_screen.dart';
 import '../../../core/constants/images.dart';
 import '../../../domain/screen_factory.dart';
+import '../../news/domain/entities/news.dart';
 import 'controller/navigator_bar_controller.dart';
 
-class BottomNavigation extends StatelessWidget {
+class BottomNavigation extends StatefulWidget {
+
+  @override
+  State<BottomNavigation> createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<BottomNavigation> {
+
   static final _screenFactory = Get.find<ScreenFactory>();
 
 
@@ -20,46 +29,38 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _index = 0;
 
-    final NavigatorBarController navigatorBarController =
-        Get.put(NavigatorBarController(), permanent: false);
-
-    return SafeArea(
-        child: Scaffold(
-      bottomNavigationBar:
-          buildBottomNavigationMenu(context, navigatorBarController),
-      body: Obx(() => IndexedStack(
-            index: navigatorBarController.tabIndex.value,
-            children: [
-              _screenFactory.makeNews(),
-              //_screenFactory.makeNews(),
-              _screenFactory.makePromo(true),
-              //Container(),
-              _screenFactory.makeCard(true),
-              _screenFactory.makeNews(),
-              _screenFactory.makeNews(),
-              _screenFactory.makeNews(),
-            ],
-          )),
-    ));
-  }
-
-  buildBottomNavigationMenu(context, navigatorBarController) {
-    //todo probably set this in controller
     final colorsTheme = Theme.of(context).colorScheme;
 
-    return Obx(() => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        child: SizedBox(
-          height: 54,//todo make adaptive
-          child: BottomNavigationBar(
+
+    return BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
-            onTap: navigatorBarController.changeTabIndex,
-            currentIndex: navigatorBarController.tabIndex.value,
+            //onTap: navigatorBarController.changeTabIndex,
+            onTap: (value) {
+              switch (value) {
+                case 0:
+                  _screenFactory.makeNews();
+                  //context.go('/news', extra: [News(title: 'title', text: 'text', id: 1, imageUrl: 'https://images.unsplash.com/photo-1542676032-6e468ada2953?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80')]);
+                  break;
+                case 1:
+                  context.go('/promo');
+                  break;
+                case 2:
+                  context.go('/card');
+                  break;
+                case 3:
+                  context.go('/map');
+                  break;
+                default:
+              }
+            },
+            currentIndex: _index,
             unselectedItemColor: colorsTheme.primary.withOpacity(0.5),
             selectedItemColor: colorsTheme.primary,
             unselectedLabelStyle: unselectedLabelStyle,
+            type: BottomNavigationBarType.fixed,
             selectedLabelStyle: selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
@@ -102,7 +103,7 @@ class BottomNavigation extends StatelessWidget {
                 label: nb_profile,
               ),
             ],
-          ),
-        )));
+          );
+
   }
 }

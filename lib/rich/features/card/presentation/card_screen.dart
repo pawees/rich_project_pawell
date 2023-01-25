@@ -180,10 +180,7 @@ class CardViewState extends State<CardView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'img/Frame 31.png',
-                    scale: 2,
-                  ), Container(
+                  Container(
                     width: 121,
                     height: 38,
                     decoration: BoxDecoration(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rich_project_pawell/rich/features/news/presentation/news_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/features/splash_screen/presentation/splash_screen.dart';
 import '../features/card/presentation/card_screen.dart';
 import '../features/navigation_bar/presentation/navigation_bar_screen.dart';
+import '../features/news/domain/entities/news.dart';
 import '../features/news/presentation/bloc/news_bloc.dart';
+import '../features/news/presentation/news_screen.dart';
 import '../features/promo/presentation/bloc/promo_bloc.dart';
 import '../features/promo/presentation/promo_screen.dart';
 import '../features/splash_screen/presentation/bloc/auth_bloc.dart';
@@ -24,7 +26,10 @@ class ScreenFactory {
           listener: (context, state) {
             //TODO state like enums
             if (state is CheckAuthState) {
-              Navigator.of(context).pushReplacementNamed(state.nextScreen);
+              context.go('/news',extra: <News>[News(title: 'title', text: 'text', id: 1,
+                  imageUrl: 'https://images.unsplash.com/photo-1542676032-6e468ada2953?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
+              )]);
+              //Navigator.of(context).pushReplacementNamed(state.nextScreen);
             }
           },
         ),
@@ -45,7 +50,8 @@ class ScreenFactory {
           builder: (context, state) {
             //TODO state like enums
             if (state is NewsScreenState) {
-              return NewsScreen(state.news);
+              //context.go('/news', extra: state.news);
+              return NewsScreen(state.news,);
             }
             return Container();
           },
@@ -61,7 +67,7 @@ class ScreenFactory {
         child: BlocBuilder<PromoBloc, PromoState>(
           builder: (context, state) {
             if (build && state is PromoScreenState) {
-              return PromoScreen();
+              context.go('/promo',);
             }
             return Container();
           },
@@ -69,15 +75,16 @@ class ScreenFactory {
       ),
     );
   }
-  Widget makeCard([build]) {
 
+
+  Widget makeCard([build]) {
     return Scaffold(
       body: BlocProvider(
         create: (context) => PromoBloc()..add(InitPromo()),
         child: BlocBuilder<PromoBloc, PromoState>(
           builder: (context, state) {
             if (build && state is PromoScreenState) {
-              return CardScreen();
+              context.go('/card',);
             }
             return Container();
           },
