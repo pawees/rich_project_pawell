@@ -60,6 +60,10 @@ class ScreenFactory {
     );
   }
 
+  
+
+
+
   Widget makePromo([build]) {
     return Scaffold(
       body: BlocProvider(
@@ -67,7 +71,9 @@ class ScreenFactory {
         child: BlocBuilder<PromoBloc, PromoState>(
           builder: (context, state) {
             if (build && state is PromoScreenState) {
-              context.go('/promo',);
+              return PromoScreen();
+
+///              context.go('/promo',);
             }
             return Container();
           },
@@ -84,7 +90,7 @@ class ScreenFactory {
         child: BlocBuilder<PromoBloc, PromoState>(
           builder: (context, state) {
             if (build && state is PromoScreenState) {
-              context.go('/card',);
+              return CardScreen();
             }
             return Container();
           },
@@ -93,4 +99,24 @@ class ScreenFactory {
     );
   }
 
+}
+class makeCard extends StatelessWidget {
+const makeCard({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => PromoBloc()..add(InitPromo()),
+        child: BlocBuilder<PromoBloc, PromoState>(
+          builder: (context, state) {
+            if ( state is PromoScreenState) {
+              context.go('/card',);
+            }
+            return Container();
+          },
+        ),
+      ),
+    );
+  }
 }

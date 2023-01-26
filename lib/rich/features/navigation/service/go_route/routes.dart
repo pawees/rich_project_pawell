@@ -6,6 +6,7 @@ import 'package:rich_project_pawell/rich/features/promo/presentation/promo_scree
 
 import '../../../../domain/screen_factory.dart';
 import '../../../home/presentation/HomePage.dart';
+import '../../../map/presentation/MapScreen.dart';
 import '../../../navigation_bar/presentation/navigation_bar_screen.dart';
 import '../../../news/domain/entities/news.dart';
 import '../../../news/presentation/news_screen.dart';
@@ -35,6 +36,10 @@ final router = GoRouter(
         GoRoute(
           path: '/card',
           builder: (context, state) => _screenFactory.makeCard(true),
+        ),
+        GoRoute(
+          path: '/map',
+          builder: (context, state) => MapScreen(),
         ),
       ]),
 ]);
