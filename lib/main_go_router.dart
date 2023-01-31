@@ -11,7 +11,7 @@ import 'package:rich_project_pawell/rich/features/navigation/service/main_naviga
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   inicialAdditionals_Moke();
-  runApp(AppBuilder());
+  runApp(const AppBuilder());
 }
 
 class AppBuilder extends StatelessWidget {

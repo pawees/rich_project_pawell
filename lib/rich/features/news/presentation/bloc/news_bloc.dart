@@ -6,9 +6,10 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:meta/meta.dart';
 
 import '../../../navigation/domain/entity/main_navigation_route_names.dart';
+import '../../data/repository/news_mock_repository.dart';
 import '../../domain/entities/news.dart';
 import '../../domain/i_news_repository.dart';
-import '../../service/mock_repository.dart';
+
 
 part 'news_event.dart';
 part 'news_state.dart';
@@ -28,7 +29,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
 
   Future<void> _initNews(Emitter<NewsState> emit) async {
-    print(_news_service is MockNewsRepo);
+    print(_news_service is NewsMockRepository);
 
     List<News> news = await _news_service.getNews();
 

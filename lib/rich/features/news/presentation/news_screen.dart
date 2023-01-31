@@ -59,6 +59,7 @@ class _News extends StatelessWidget {
               aspectRatio: 1.785,
               borderRadius: BorderRadius.circular(8),
               imageUrl: news[index].imageUrl,
+              fit: BoxFit.cover,
             ),
             cardContent(index),
           ],
