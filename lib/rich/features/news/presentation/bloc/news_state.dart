@@ -5,12 +5,23 @@ abstract class NewsState {}
 
 class NewsInitial extends NewsState {}
 
-class NewsScreenState extends NewsInitial {
-  final List<News> news;
+class NewsScreenState  {
+  final NewsListContainer newsContainer;
 
-  NewsScreenState(this.news);
+  NewsScreenState({required this.newsContainer});
+
+  const NewsScreenState.inital()
+      : newsContainer = const NewsListContainer.initial();
+
+  NewsScreenState copyWith({
+    NewsListContainer? newsContainer,
+  }) {
+    return NewsScreenState(
+      newsContainer :
+      newsContainer ?? this.newsContainer,);
+  }
 
   @override
-  List<Object> get props => [news,];
+  List<Object> get props => [newsContainer,];
 
 }

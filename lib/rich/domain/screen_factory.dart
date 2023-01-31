@@ -44,14 +44,14 @@ class ScreenFactory {
   Widget makeNews() {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => NewsBloc()..add(InitNews()),
-        child: BlocBuilder<NewsBloc, NewsState>(
+        create: (context) => NewsBloc(NewsScreenState.inital())..add(InitNews()),
+        child: BlocBuilder<NewsBloc, NewsScreenState>(
           buildWhen: (preState, currState) => currState is NewsScreenState,
           builder: (context, state) {
             //TODO state like enums
             if (state is NewsScreenState) {
               //context.go('/news', extra: state.news);
-              return NewsScreen(state.news,);
+              return NewsScreen(state.newsContainer.news,);
             }
             return Container();
           },
