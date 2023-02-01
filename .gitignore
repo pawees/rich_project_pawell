@@ -33,4 +33,6 @@ google-services.json
 .dart_tool/version
 .flutter-plugins
 .flutter-plugins-dependencies
-.dart_tool/version
+.dart_tool/flutter_build
+
+.flutter-plugins-dependencies

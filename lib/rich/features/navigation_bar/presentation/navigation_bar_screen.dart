@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
 import 'package:rich_project_pawell/rich/features/news/presentation/news_screen.dart';
 import '../../../core/constants/images.dart';
+import '../../../core/test_keys.dart';
 import '../../../domain/screen_factory.dart';
 import '../../news/domain/entities/news.dart';
 import 'controller/navigator_bar_controller.dart';
@@ -64,6 +65,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
+                  key: HomeTestKeys.newsBtn,
                   margin: EdgeInsets.only(bottom: 7),
                   child: Images.nav_bar_news,
                 ),
