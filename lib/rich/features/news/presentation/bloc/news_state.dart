@@ -1,24 +1,41 @@
 part of 'news_bloc.dart';
 
-@immutable
-abstract class NewsState {}
-
-class NewsInitial extends NewsState {}
 
 class NewsScreenState  {
   final NewsListContainer newsContainer;
+  final News oneNew;
 
-  NewsScreenState({required this.newsContainer});
+  NewsScreenState({
+    required this.newsContainer,
+    required this.oneNew
+  });
 
-  const NewsScreenState.inital()
-      : newsContainer = const NewsListContainer.initial();
+   NewsScreenState.inital()
+      : newsContainer = const NewsListContainer.initial(),
+        oneNew = News(title: '', text: '', id: 0, imageUrl: '');
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is NewsScreenState &&
+              runtimeType == other.runtimeType &&
+              newsContainer == other.newsContainer &&
+              oneNew == other.oneNew;
+
+  @override
+  int get hashCode =>
+      newsContainer.hashCode ^
+      oneNew.hashCode;
 
   NewsScreenState copyWith({
     NewsListContainer? newsContainer,
+    News? oneNew,
   }) {
     return NewsScreenState(
       newsContainer :
-      newsContainer ?? this.newsContainer,);
+      newsContainer ?? this.newsContainer,
+      oneNew: oneNew ?? this.oneNew
+    );
   }
 
   @override

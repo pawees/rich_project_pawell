@@ -17,9 +17,6 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
 
-  static final _screenFactory = Get.find<ScreenFactory>();
-
-
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
@@ -42,7 +39,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             onTap: (value) {
               switch (value) {
                 case 0:
-                  context.go('/news', extra: [News(title: 'title', text: 'text', id: 1, imageUrl: 'https://images.unsplash.com/photo-1542676032-6e468ada2953?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80')]);
+                  context.go('/news');
                   break;
                 case 1:
                   context.go('/promo');

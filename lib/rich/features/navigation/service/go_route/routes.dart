@@ -1,3 +1,4 @@
+
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../domain/screen_factory.dart';
@@ -23,6 +24,11 @@ final router = GoRouter(
         GoRoute(
           path: '/news',
           builder: (context, state) => _screenFactory.makeNews(),
+          routes: [
+            GoRoute(
+                path: 'details',
+                builder: (context, state) => _screenFactory.makeNewsDetails(state.extra))
+          ]
         ),
         GoRoute(
           path: '/promo',

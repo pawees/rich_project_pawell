@@ -60,7 +60,24 @@ class ScreenFactory {
     );
   }
 
-  
+  Widget makeNewsDetails(id) {
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => NewsBloc(NewsScreenState.inital())..add(DetailsNews(id)),
+        child: BlocBuilder<NewsBloc, NewsScreenState>(
+          buildWhen: (preState, currState) => currState is NewsScreenState,
+          builder: (context, state) {
+            //TODO state like enums
+            if (state is NewsScreenState) {
+              //context.go('/news', extra: state.news);
+              return NewsDetails(state.oneNew,);
+            }
+            return Container();
+          },
+        ),
+      ),
+    );
+  }
 
 
 
@@ -99,24 +116,5 @@ class ScreenFactory {
     );
   }
 
-}
-class makeCard extends StatelessWidget {
-const makeCard({ Key? key }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => PromoBloc()..add(InitPromo()),
-        child: BlocBuilder<PromoBloc, PromoState>(
-          builder: (context, state) {
-            if ( state is PromoScreenState) {
-              context.go('/card',);
-            }
-            return Container();
-          },
-        ),
-      ),
-    );
-  }
 }
