@@ -10,29 +10,21 @@ import 'package:flutter/material.dart';
 
 
 class NavigatorBarController extends GetxController {
-  late var context;
 
-  NavigatorBarController ({required this.context});
 
-  static final _screenFactory = Get.find<ScreenFactory>();
+  final TextStyle unselectedLabelStyle = TextStyle(
+      color: Colors.white.withOpacity(0.5),
+      fontWeight: FontWeight.w500,
+      fontSize: 12);
+
+  final TextStyle selectedLabelStyle =
+  TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 13);
 
   var tabIndex = 0.obs;
 
 
   void changeTabIndex(int index) async {
     tabIndex.value = index;
-    switch (index) {
-      case 0:
-        context.go('/news',extra: [News(title: 'title', text: 'text', id: 1, imageUrl: 'imageUrl')]);
-        break;
-      case 1:
-        context.go('/promo');
-        break;
-      case 2:
-        context.go('/card');
-        break;
-      default:
-    }
   }
 
   @override
