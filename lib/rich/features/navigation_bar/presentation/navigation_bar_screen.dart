@@ -25,7 +25,6 @@ class BottomNavigation extends StatelessWidget {
     return Obx(() => BottomNavigationBar(
       showUnselectedLabels: true,
       showSelectedLabels: true,
-      //onTap: navigatorBarController.changeTabIndex,
       onTap: (value) {
         navigatorBarController.tabIndex.value = value;
         switch (navigatorBarController.tabIndex.value) {

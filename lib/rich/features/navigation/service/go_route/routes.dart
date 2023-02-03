@@ -12,15 +12,16 @@ final _screenFactory = Get.find<ScreenFactory>();
 final router = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => _screenFactory.makeAuth(),
+    ),
   ShellRoute(
       builder: (context, state, child) {
         return HomePage(child: child);
       },
       routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => _screenFactory.makeAuth(),
-        ),
+
         GoRoute(
           path: '/news',
           builder: (context, state) => _screenFactory.makeNews(),

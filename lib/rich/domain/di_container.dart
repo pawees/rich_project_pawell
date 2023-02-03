@@ -6,7 +6,6 @@ import 'package:rich_project_pawell/rich/features/news/domain/i_news_api.dart';
 import 'package:rich_project_pawell/rich/features/news/data/api/news_api_json_rpc.dart';
 import 'package:rich_project_pawell/rich/features/news/data/api/news_api_mock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../features/firebase_cloud_messaging/service/push_notification_service.dart';
 import '../features/navigation/service/main_navigation.dart';
 import '../features/news/domain/i_news_repository.dart';
 import '../features/news/data/repository/news_mock_repository.dart';
@@ -14,6 +13,7 @@ import '../features/news/data/repository/news_repository.dart';
 
 
 void inicialAdditionals () {
+
   Get.put<ScreenFactory>(ScreenFactory());
   Get.put<MainNavigation>(MainNavigation());
   Get.put<AuthService>(AuthService());

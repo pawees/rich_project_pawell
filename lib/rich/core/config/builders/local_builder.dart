@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
-import 'package:rich_project_pawell/rich/core/theme/theme.dart';
-import 'package:rich_project_pawell/rich/domain/di_container.dart';
-import 'package:rich_project_pawell/rich/features/navigation/service/go_route/routes.dart';
+import 'package:rich_project_pawell/rich/domain/i_builder.dart';
 
+import '../../../features/navigation/service/go_route/routes.dart';
+import '../../constants/sizes.dart';
+import '../../theme/theme.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  inicialAdditionals_Moke();
-  runApp(const AppBuilder());
+class LocalBuilder implements AppBuilderInterface {
+
+  @override
+  Widget buildApp() {
+    return AppBuilder();
+  }
+
 }
+
 
 class AppBuilder extends StatelessWidget {
   const AppBuilder({Key? key}) : super(key: key);
@@ -36,10 +40,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'mocked data',
       theme: MyAppTheme.themeLight,
-      darkTheme: MyAppTheme.themeDark,
-      themeMode: ThemeMode.system,
       routerConfig: router,
     );
   }

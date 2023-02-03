@@ -1,9 +1,16 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:rich_project_pawell/rich/core/config/environment/environment.dart';
+
 import '../../domain/entities/news.dart';
 import '../../domain/i_news_api.dart';
 
 class NewsApiMock implements INewsApi {
+
+  final _env = Get.find<Enviroment>();
+
 
   List<String> urls = [
     'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/00/92/70/98/23/791662140cd7.jpg',
@@ -80,6 +87,7 @@ class NewsApiMock implements INewsApi {
       return News(id: 1, title: _getRandom(titles), text: _getRandom(texts), imageUrl: _getRandom(urls));
     }
     final news = List<News>.generate(40, (int index) => _generateNews());
+    var q = _env.url;
     return news;
 
   }
