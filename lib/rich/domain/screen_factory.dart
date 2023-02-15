@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/features/splash_screen/presentation/splash_screen.dart';
 import '../features/card/presentation/card_screen.dart';
+import '../features/map/presentation/MapScreen.dart';
+import '../features/navigation/service/go_route/routes.dart';
 import '../features/navigation_bar/presentation/navigation_bar_screen.dart';
 import '../features/news/domain/entities/news.dart';
 import '../features/news/presentation/bloc/news_bloc.dart';
@@ -70,7 +72,7 @@ class ScreenFactory {
             //TODO state like enums
             if (state is NewsScreenState) {
               //context.go('/news', extra: state.news);
-              return NewsDetails(state.oneNew,);
+              return MyStatefulWidget(child:NewsDetails(state.oneNew,));
             }
             return Container();
           },
@@ -78,8 +80,6 @@ class ScreenFactory {
       ),
     );
   }
-
-
 
   Widget makePromo([build]) {
     return Scaffold(
@@ -90,7 +90,6 @@ class ScreenFactory {
             if (build && state is PromoScreenState) {
               return PromoScreen();
 
-///              context.go('/promo',);
             }
             return Container();
           },
@@ -98,7 +97,6 @@ class ScreenFactory {
       ),
     );
   }
-
 
   Widget makeCard([build]) {
     return Scaffold(
@@ -115,6 +113,13 @@ class ScreenFactory {
       ),
     );
   }
+
+  Widget makeMap() {
+    return MyStatefulWidget(child: MapScreen());
+  }
+
+
+
 
 
 }

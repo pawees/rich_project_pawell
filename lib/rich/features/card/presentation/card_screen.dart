@@ -31,7 +31,7 @@ class CardViewState extends State<CardView> {
   @override
   Widget build(BuildContext context) {
     print('build $context');
-    return
+    return SafeArea(child:
       SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             child: Column(
@@ -75,7 +75,7 @@ class CardViewState extends State<CardView> {
                 ),
               ],
             ),
-          );
+          ));
 
   }
 

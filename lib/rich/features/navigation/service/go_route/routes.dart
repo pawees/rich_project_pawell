@@ -5,7 +5,45 @@ import '../../../../domain/screen_factory.dart';
 import '../../../home/presentation/HomePage.dart';
 import '../../../map/presentation/MapScreen.dart';
 
+import 'package:flutter/material.dart';
 
+
+class MyStatefulWidget extends StatefulWidget {
+  final Widget child;
+  const MyStatefulWidget({super.key, required this.child});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// [AnimationController]s can be created with `vsync: this` because of
+/// [TickerProviderStateMixin].
+class _MyStatefulWidgetState extends State<MyStatefulWidget>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(milliseconds: 1400),
+    vsync: this,
+  )..repeat(reverse: true);
+  late final Animation<double> _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.slowMiddle,
+  );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+        opacity: _animation,
+        child: widget.child,
+      );
+
+  }
+}
 
 final _screenFactory = Get.find<ScreenFactory>();
 // GoRouter configuration
@@ -41,7 +79,7 @@ final router = GoRouter(
         ),
         GoRoute(
           path: '/map',
-          builder: (context, state) => MapScreen(),
+          builder: (context, state) => _screenFactory.makeMap(),
         ),
       ]),
 ]);

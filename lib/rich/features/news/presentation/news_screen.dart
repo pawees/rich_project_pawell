@@ -19,13 +19,13 @@ class NewsScreen extends StatelessWidget {
 
     return SingleChildScrollView(
       physics: AlwaysScrollableScrollPhysics(),
-      child: Column(
+      child: SafeArea(child: Column(
         children: [
           appBar(news_title),
           _News(news),
         ],
       ),
-    );
+    ));
   }
 }
 

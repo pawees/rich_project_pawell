@@ -18,13 +18,13 @@ class PromoScreen extends StatelessWidget {
 
     return SingleChildScrollView(
       physics: AlwaysScrollableScrollPhysics(),
-      child: Column(
+      child: SafeArea(child:Column(
         children: [
           appBar(promotions_title),
           _News(),
         ],
       ),
-    );
+    ));
   }
 }
 

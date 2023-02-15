@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rich_project_pawell">
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
         android:label="rich_project_pawell"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

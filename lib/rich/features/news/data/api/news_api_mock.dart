@@ -9,7 +9,7 @@ import '../../domain/i_news_api.dart';
 
 class NewsApiMock implements INewsApi {
 
-  final _env = Get.find<Enviroment>();
+  //final _env = Get.find<Enviroment>();
 
 
   List<String> urls = [
@@ -87,7 +87,6 @@ class NewsApiMock implements INewsApi {
       return News(id: 1, title: _getRandom(titles), text: _getRandom(texts), imageUrl: _getRandom(urls));
     }
     final news = List<News>.generate(40, (int index) => _generateNews());
-    var q = _env.url;
     return news;
 
   }
