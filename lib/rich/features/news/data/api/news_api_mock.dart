@@ -92,6 +92,18 @@ class NewsApiMock implements INewsApi {
   }
 
   @override
+  Future getNewsForTest() async {
+    _getRandom(list) {
+      return list.elementAt(Random().nextInt(list.length));
+    }
+    _generateNews() {
+      return News(id: 1, title: _getRandom(titles), text: _getRandom(texts), imageUrl: '');
+    }
+    final news = List<News>.generate(40, (int index) => _generateNews());
+    return news;
+  }
+
+  @override
   Future<void> updateNews(params) {
     // TODO: implement updateNews
     throw UnimplementedError();

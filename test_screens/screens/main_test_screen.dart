@@ -10,6 +10,9 @@ abstract class MainTestScreen {
   /// аппбар
   static Finder appbar = find.byKey(HomeTestKeys.appBar);
 
+  ///naviigation promo btn
+  static Finder promoBtn = find.byKey(HomeTestKeys.promoBtn);
+
   /// скролл на экране списка
   static Finder scroll = find.byKey(HomeTestKeys.scroll);
 

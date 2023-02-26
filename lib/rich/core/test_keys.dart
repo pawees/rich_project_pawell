@@ -11,6 +11,9 @@ abstract class HomeTestKeys {
   static const Key appBar = Key('app_bar');
   /// кнопка открытия новостей
   static const Key newsBtn = Key('news_btn');
+
+  /// кнопка открытия промо
+  static const Key promoBtn = Key('promo_btn');
 }
 
 abstract class FavoritesTestKeys {

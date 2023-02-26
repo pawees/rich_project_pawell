@@ -60,6 +60,7 @@ class BottomNavigation extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Container(
+            key: HomeTestKeys.promoBtn,
             margin: EdgeInsets.only(bottom: 7),
             child: Images.nav_bar_promo,
           ),

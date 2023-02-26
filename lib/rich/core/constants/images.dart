@@ -15,12 +15,12 @@ class Images {
 
 
   ///nav_bar logo's
-  static var nav_bar_news = Image.asset('assets/images/dor_nav_bar_png/news.png', width: SizeConfig.iconSizePng);
-  static var nav_bar_promo = SvgPicture.asset('assets/images/dor_nav_bar_png/promo.svg', width: SizeConfig.iconSizeSvg);
-  static var nav_bar_card = SvgPicture.asset('assets/images/dor_nav_bar_png/card.svg', width: SizeConfig.iconSizeSvg);
-  static var nav_bar_map = SvgPicture.asset('assets/images/dor_nav_bar_png/map.svg', width: SizeConfig.iconSizeSvg);
-  static var nav_bar_catalog = SvgPicture.asset('assets/images/dor_nav_bar_png/catalog.svg', width: SizeConfig.iconSizeSvg);
-  static var nav_bar_profiile = SvgPicture.asset('assets/images/dor_nav_bar_png/profile.svg', width: SizeConfig.iconSizeSvg);
+  static var nav_bar_news = Image.asset('assets/images/dor_nav_bar_png/news.png', width: 10);
+  static var nav_bar_promo = SvgPicture.asset('assets/images/dor_nav_bar_png/promo.svg', width: 10);
+  static var nav_bar_card = SvgPicture.asset('assets/images/dor_nav_bar_png/card.svg', width: 10);
+  static var nav_bar_map = SvgPicture.asset('assets/images/dor_nav_bar_png/map.svg', width: 10);
+  static var nav_bar_catalog = SvgPicture.asset('assets/images/dor_nav_bar_png/catalog.svg', width: 10);
+  static var nav_bar_profiile = SvgPicture.asset('assets/images/dor_nav_bar_png/profile.svg', width: 10);
 
   ///
 

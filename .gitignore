@@ -35,7 +35,10 @@ google-services.json
 .flutter-plugins-dependencies
 .dart_tool/flutter_build
 
-.flutter-plugins-dependencies
-.dart_tool/package_config_subset
+
 *.json
-.flutter-plugins-dependencies
+
+# don't check in golden failure output
+**/failures/*.png
+
+*.png

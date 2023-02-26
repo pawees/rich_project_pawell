@@ -20,7 +20,7 @@ class AppBuilder extends StatelessWidget {
 
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
-        SizeConfig().init(constraints, orientation);
+        //SizeConfig().init(constraints, orientation);
         return MyApp();
       });
     });
