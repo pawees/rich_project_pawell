@@ -1,15 +1,13 @@
-
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../domain/screen_factory.dart';
 import '../../../home/presentation/HomePage.dart';
-import '../../../map/presentation/MapScreen.dart';
 
 import 'package:flutter/material.dart';
 
-
 class MyStatefulWidget extends StatefulWidget {
   final Widget child;
+
   const MyStatefulWidget({super.key, required this.child});
 
   @override
@@ -38,37 +36,36 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-        opacity: _animation,
-        child: widget.child,
-      );
-
+      opacity: _animation,
+      child: widget.child,
+    );
   }
 }
 
 final _screenFactory = Get.find<ScreenFactory>();
+
 // GoRouter configuration
 final router = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => _screenFactory.makeAuth(),
-    ),
+  GoRoute(
+    path: '/',
+    builder: (context, state) => _screenFactory.makeAuth(),
+  ),
   ShellRoute(
       builder: (context, state, child) {
         return HomePage(child: child);
       },
       routes: [
-
         GoRoute(
-          path: '/news',
-          builder: (context, state) => _screenFactory.makeNews(),
-          routes: [
-            GoRoute(
-                path: 'details',
-                builder: (context, state) => _screenFactory.makeNewsDetails(state.extra))
-          ]
-        ),
+            path: '/news',
+            builder: (context, state) => _screenFactory.makeNews(),
+            routes: [
+              GoRoute(
+                  path: 'details',
+                  builder: (context, state) =>
+                      _screenFactory.makeNewsDetails(state.extra))
+            ]),
         GoRoute(
           path: '/promo',
           builder: (context, state) => _screenFactory.makePromo(true),

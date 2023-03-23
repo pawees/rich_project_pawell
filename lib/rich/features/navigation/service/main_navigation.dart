@@ -15,7 +15,7 @@ class MainNavigation implements IMainNavigation{
   final routes = <String, Widget Function(BuildContext)>{
     MainNavigationRouteNames.loaderWidget: (_) => _screenFactory.makeLoader(),
     MainNavigationRouteNames.auth: (_) => _screenFactory.makeAuth(),
-    MainNavigationRouteNames.home: (_) => _screenFactory.makeHome(),
+    //MainNavigationRouteNames.home: (_) => _screenFactory.makeHome(),
     //MainNavigationRouteNames.news: (_) => _screenFactory.makeNews(),
     //MainNavigationRouteNames.promo: (_) => _screenFactory.makePromo(),
   };

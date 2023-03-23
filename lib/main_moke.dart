@@ -4,8 +4,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
 import 'package:rich_project_pawell/rich/core/theme/theme.dart';
 import 'package:rich_project_pawell/rich/domain/di_container.dart';
-import 'package:rich_project_pawell/rich/features/navigation/domain/entity/main_navigation_route_names.dart';
 import 'package:rich_project_pawell/rich/features/navigation/service/main_navigation.dart';
+import 'package:rich_project_pawell/rich/features/navigation/service/go_route/routes.dart';
+
 
 
 void main() {
@@ -36,13 +37,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: MyAppTheme.themeLight,
       darkTheme: MyAppTheme.themeDark,
       themeMode: ThemeMode.system,
-      routes: mainNavigation.routes,
-      initialRoute: MainNavigationRouteNames.auth,
+      routerConfig: router,
     );
   }
 }
