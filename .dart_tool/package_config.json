@@ -14,6 +14,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/archive-3.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "args",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.2",
       "packageUri": "lib/",
@@ -177,7 +183,7 @@
     },
     {
       "name": "file",
-      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.4",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -198,6 +204,12 @@
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-8.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_driver",
+      "rootUri": "file:///Users/pavell/development/flutter/packages/flutter_driver",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_lints",
@@ -230,6 +242,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fuchsia_remote_debug_protocol",
+      "rootUri": "file:///Users/pavell/development/flutter/packages/fuchsia_remote_debug_protocol",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/get-4.6.5",
       "packageUri": "lib/",
@@ -237,7 +255,7 @@
     },
     {
       "name": "glob",
-      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.1.1",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -274,6 +292,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "integration_test",
+      "rootUri": "file:///Users/pavell/development/flutter/packages/integration_test",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -560,6 +584,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "sync_http",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/sync_http-0.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -590,6 +620,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "vm_service",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/vm_service-9.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "watcher",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/watcher-1.0.2",
       "packageUri": "lib/",
@@ -598,6 +634,12 @@
     {
       "name": "web_socket_channel",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/web_socket_channel-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "webdriver",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/webdriver-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -632,7 +674,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-02-02T16:17:43.990148Z",
+  "generated": "2023-03-24T16:08:07.687106Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

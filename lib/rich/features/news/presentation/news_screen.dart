@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/features/app_bar/presentation/app_bar.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
+import 'package:rich_project_pawell/rich/features/news/presentation/controller/news_screen_controller.dart';
 
 import '../../shimmer_image/presentation/shimmer_image.dart';
 import '../domain/entities/news.dart';
+
+import 'package:get/get.dart';
+
 
 class NewsScreen extends StatelessWidget {
   final List<News> news;
 
   const NewsScreen(this.news, {Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
