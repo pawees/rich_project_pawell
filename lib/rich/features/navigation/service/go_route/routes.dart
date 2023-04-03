@@ -71,6 +71,10 @@ final router = GoRouter(
           builder: (context, state) => _screenFactory.makePromo(true),
         ),
         GoRoute(
+          path: '/open_news',
+          builder: (context, state) => _screenFactory.openNews(),
+        ),
+        GoRoute(
           path: '/card',
           builder: (context, state) => _screenFactory.makeCard(true),
         ),

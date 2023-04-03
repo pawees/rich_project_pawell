@@ -7,10 +7,16 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 
 import '../../domain/entities/news.dart';
 import '../../domain/i_news_repository.dart';
+import 'dart:math';
+
 
 part 'news_event.dart';
 
 part 'news_state.dart';
+
+final randomNumberGenerator = Random();
+
+late NewsListContainer cacheNews;
 
 
 class NewsListContainer {
@@ -24,12 +30,20 @@ class NewsListContainer {
       : news = const <News>[],
         currentPage = 0;
 
+
   NewsListContainer copyWith({
     List<News>? news,
     int? currentPage,
   }) {
     return NewsListContainer(news: news ?? [],currentPage: currentPage ?? this.currentPage);
   }
+
+  factory NewsListContainer.cache() {
+
+      return cacheNews;
+
+  }
+
 }
 
 
@@ -40,6 +54,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsScreenState> {
   NewsBloc( NewsScreenState initialState) : super(initialState) {
     on<NewsEvent>((event, emit) async {
       if (event is InitNews) _initNews(event,emit);
+      if (event is OpenNews) _openNews(event,emit);
       if (event is DetailsNews) _detailsNews(event,emit);
 
       // TODO: implement event handler
@@ -50,6 +65,13 @@ class NewsBloc extends Bloc<NewsEvent, NewsScreenState> {
   Future<void> _initNews(InitNews event, Emitter<NewsScreenState> emit) async {
     final container = state.newsContainer;
     final container_news = container.copyWith(news: await _news_service.getNews());
+    cacheNews = container_news;
+    final newState = state.copyWith(newsContainer: container_news);
+    emit(newState);
+  }
+
+  Future<void> _openNews(OpenNews event, Emitter<NewsScreenState> emit) async {
+    final container_news = NewsListContainer.cache();
     final newState = state.copyWith(newsContainer: container_news);
     emit(newState);
   }
