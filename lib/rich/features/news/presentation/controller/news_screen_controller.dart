@@ -13,11 +13,17 @@ import 'package:flutter/material.dart';
 class NewsScreenController extends GetxController {
 
 
-  RxString title = nb_news.obs;
+  final title = nb_news.obs;
+  bool variant = false;
 
-
-  void changeTitle(String title) async {
-    title = title;
+  void changeTitle() async {
+    if(!variant){
+      title.value = 'Bad news';
+    }
+    else{
+      title.value = 'Good news';
+    }
+    variant = !variant;
   }
 
   @override

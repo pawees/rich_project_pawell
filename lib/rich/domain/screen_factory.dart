@@ -48,7 +48,23 @@ class ScreenFactory {
           builder: (context, state) {
             //TODO state like enums
             if (state is NewsScreenState) {
-              //context.go('/news', extra: state.news);
+              return NewsScreen(state.newsContainer.news,);
+            }
+            return Container();
+          },
+        ),
+      ),
+    );
+  }
+  Widget openNews() {
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => NewsBloc(NewsScreenState.inital())..add(OpenNews()),
+        child: BlocBuilder<NewsBloc, NewsScreenState>(
+          buildWhen: (preState, currState) => currState is NewsScreenState,
+          builder: (context, state) {
+            //TODO state like enums
+            if (state is NewsScreenState) {
               return NewsScreen(state.newsContainer.news,);
             }
             return Container();

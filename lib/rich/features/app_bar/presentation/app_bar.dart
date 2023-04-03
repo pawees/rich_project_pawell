@@ -16,8 +16,7 @@ appBar(title,[leading,action]) {
     key: HomeTestKeys.appBar,
     leading: IconButton(
         onPressed: (){
-          print('123');
-          newsScreenController.changeTitle('Хуёвости');
+          newsScreenController.changeTitle();
         },
         key: HomeTestKeys.appBarIcon,
         icon: const Icon(Icons.accessibility_sharp)
