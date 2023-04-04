@@ -1,38 +1,43 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:rich_project_pawell/rich/core/constants/texts.dart';
-import 'package:rich_project_pawell/rich/domain/screen_factory.dart';
-
-import '../../../news/domain/entities/news.dart';
-import '../../../promo/presentation/bloc/promo_bloc.dart';
 import 'package:flutter/material.dart';
 
-
+import '../../domain/entities/news.dart';
+import '../../domain/i_news_repository.dart';
 
 class NewsScreenController extends GetxController {
+  //this is constructor?
+  static final _news_service = Get.find<INewsRepository>();
 
 
-  final title = nb_news.obs;
-  bool variant = false;
-
-  void changeTitle() async {
-    if(!variant){
-      title.value = 'Bad news';
-    }
-    else{
-      title.value = 'Good news';
-    }
-    variant = !variant;
-  }
+  double _offset = 0.0;
+  late ScrollController scrollContr;
+  var news_lenght = 0.obs;
 
   @override
-  void onInit() {
+  void onInit() async {
+    List<News> n = await _news_service.getNews();
+    news_lenght.value = n.length;
     super.onInit();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  saveScrollOffset(offset) {
+    print('!!!!!!!!!!!!!!!!!!');
+    _offset = offset;
+
   }
+
+  ScrollController getController() =>
+      scrollContr = ScrollController(initialScrollOffset: _offset,);
+
+
+
+  void addListenersss(scr) {
+    scr.addListener(() {
+      saveScrollOffset(scrollContr.offset);
+    });
+  }
+
+
+
 }

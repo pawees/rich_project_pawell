@@ -14,15 +14,12 @@ part 'news_event.dart';
 
 part 'news_state.dart';
 
-final randomNumberGenerator = Random();
-
-late NewsListContainer cacheNews;
 
 
 class NewsListContainer {
   final List<News> news;
   final int currentPage;
-
+  static List<NewsListContainer> __cacheContainers = [];
 
   NewsListContainer({required this.currentPage, required this.news});
 
@@ -39,8 +36,15 @@ class NewsListContainer {
   }
 
   factory NewsListContainer.cache() {
+      return __cacheContainers[0];
+  }
 
-      return cacheNews;
+  factory NewsListContainer.newContainer(
+      List<News>? news,
+      int? currentPage,) {
+    var new_container = NewsListContainer(news: news ?? [],currentPage: currentPage ?? 0);
+    __cacheContainers.add(new_container);
+    return new_container;
 
   }
 
@@ -63,24 +67,21 @@ class NewsBloc extends Bloc<NewsEvent, NewsScreenState> {
   }
 
   Future<void> _initNews(InitNews event, Emitter<NewsScreenState> emit) async {
-    final container = state.newsContainer;
-    final container_news = container.copyWith(news: await _news_service.getNews());
-    cacheNews = container_news;
-    final newState = state.copyWith(newsContainer: container_news);
+    final containerNews = NewsListContainer.newContainer(await _news_service.getNews(),1);
+    final newState = state.copyWith(newsContainer: containerNews);
     emit(newState);
   }
 
   Future<void> _openNews(OpenNews event, Emitter<NewsScreenState> emit) async {
-    final container_news = NewsListContainer.cache();
-    final newState = state.copyWith(newsContainer: container_news);
+    final containerNews = NewsListContainer.cache();
+    final newState = state.copyWith(newsContainer: containerNews);
     emit(newState);
   }
 
   Future<void> _detailsNews(DetailsNews event, Emitter<NewsScreenState> emit) async {
-    final container = state.newsContainer;
-    final container_news = container.copyWith(news: await _news_service.getNews());
-    final one_new = container_news.news[event.id];
-    emit(state.copyWith(oneNew: one_new));
+    final containerNews = NewsListContainer.cache();
+    final oneNew = containerNews.news[event.id];
+    emit(state.copyWith(oneNew: oneNew));
 
   }
 

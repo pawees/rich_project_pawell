@@ -45,9 +45,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 final _screenFactory = Get.find<ScreenFactory>();
 
 // GoRouter configuration
-final router = GoRouter(
-  initialLocation: '/',
-  routes: [
+final router = GoRouter(initialLocation: '/', routes: [
   GoRoute(
     path: '/',
     builder: (context, state) => _screenFactory.makeAuth(),
@@ -58,22 +56,23 @@ final router = GoRouter(
       },
       routes: [
         GoRoute(
-            path: '/news',
-            builder: (context, state) => _screenFactory.makeNews(),
-            routes: [
-              GoRoute(
-                  path: 'details',
-                  builder: (context, state) =>
-                      _screenFactory.makeNewsDetails(state.extra))
-            ]),
+          path: '/news',
+          builder: (context, state) => _screenFactory.makeNews(),
+        ),
         GoRoute(
           path: '/promo',
           builder: (context, state) => _screenFactory.makePromo(true),
         ),
         GoRoute(
-          path: '/open_news',
-          builder: (context, state) => _screenFactory.openNews(),
-        ),
+            path: '/open_news',
+            builder: (context, state) => _screenFactory.openNews(),
+            routes: [
+              GoRoute(
+                path: 'details',
+                builder: (context, state) =>
+                    _screenFactory.makeNewsDetails(state.extra),
+              )
+            ]),
         GoRoute(
           path: '/card',
           builder: (context, state) => _screenFactory.makeCard(true),
