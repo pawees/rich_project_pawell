@@ -11,7 +11,7 @@ class NewsScreenState  {
   });
 
    NewsScreenState.inital()
-      : newsContainer = const NewsListContainer.initial(),
+      : newsContainer = NewsListContainer.cache(),
         oneNew = News(title: '', text: '', id: 0, imageUrl: '');
 
   @override

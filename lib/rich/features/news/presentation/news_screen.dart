@@ -20,15 +20,14 @@ class NewsScreen extends StatelessWidget {
     final txtTheme = Theme.of(context).textTheme;
 
     return SafeArea(
-          child:
-              _News(news, ),
-
-
-        );
+      child: _News(
+        news,
+      ),
+    );
   }
 }
 
-class _News extends GetView<NewsScreenController> {
+class _News extends StatelessWidget {
   _News(this.news, {Key? key}) : super(key: key);
 
   final NewsScreenController newsScreenController =
@@ -36,25 +35,29 @@ class _News extends GetView<NewsScreenController> {
 
   final List<News> news;
 
-
   @override
   Widget build(BuildContext context) {
-    ScrollController scrol = newsScreenController.getController();
-    newsScreenController.addListenersss(scrol);
+
+    ScrollController controller = newsScreenController.initialController();
 
     return CustomScrollView(
-        key: PageStorageKey(0),
-        controller: scrol,
-        slivers: [
-          //SliverAppBar(),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => CardNews(index, news),
-              childCount: newsScreenController.news_lenght.value,
-            ),
+      controller: controller,
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          title: appBar(news_title),
+          flexibleSpace: appBar(news_title),
+
+
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => CardNews(index, news),
+            childCount: 10,
           ),
-        ],
-      );
+        ),
+      ],
+    );
 
     // return ListView.builder(
     //   controller: ScrollController(initialScrollOffset: 830),
@@ -136,7 +139,9 @@ class CardNews extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(child: Text('$index'),),
+            Center(
+              child: Text('$index'),
+            ),
             ShimmerImage(
               aspectRatio: 1.785,
               borderRadius: BorderRadius.circular(8),

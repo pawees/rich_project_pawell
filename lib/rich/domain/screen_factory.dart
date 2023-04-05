@@ -37,12 +37,11 @@ class ScreenFactory {
     );
   }
 
-
+//
 
   Widget makeNews() {
+    //return BlocStyleWidged(inside him code below)
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => NewsBloc(NewsScreenState.inital())..add(InitNews()),
         child: BlocBuilder<NewsBloc, NewsScreenState>(
           buildWhen: (preState, currState) => currState is NewsScreenState,
           builder: (context, state) {
@@ -56,10 +55,12 @@ class ScreenFactory {
       ),
     );
   }
+
+
   Widget openNews() {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => NewsBloc(NewsScreenState.inital())..add(OpenNews()),
+        create: (context) => NewsBloc(NewsScreenState.inital()),
         child: BlocBuilder<NewsBloc, NewsScreenState>(
           buildWhen: (preState, currState) => currState is NewsScreenState,
           builder: (context, state) {
