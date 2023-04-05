@@ -4,6 +4,7 @@ part of 'news_bloc.dart';
 abstract class NewsEvent {}
 
 class InitNews extends NewsEvent {}
+class OpenNews extends NewsEvent {}
 
 
 class DetailsNews extends NewsEvent {

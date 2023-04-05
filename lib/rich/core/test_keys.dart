@@ -9,6 +9,8 @@ abstract class HomeTestKeys {
 
 
   static const Key appBar = Key('app_bar');
+  static const Key appBarIcon = Key('app_bar_icon');
+
   /// кнопка открытия новостей
   static const Key newsBtn = Key('news_btn');
 

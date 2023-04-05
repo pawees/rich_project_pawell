@@ -28,9 +28,7 @@ class ScreenFactory {
           listener: (context, state) {
             //TODO state like enums
             if (state is CheckAuthState) {
-              context.go('/news',extra: <News>[News(title: 'title', text: 'text', id: 1,
-                  imageUrl: 'https://images.unsplash.com/photo-1542676032-6e468ada2953?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
-              )]);
+              context.go('/news',);
               //Navigator.of(context).pushReplacementNamed(state.nextScreen);
             }
           },
@@ -39,9 +37,7 @@ class ScreenFactory {
     );
   }
 
-  Widget makeHome() {
-    return Scaffold(body: BottomNavigation());
-  }
+
 
   Widget makeNews() {
     return Scaffold(
@@ -52,7 +48,23 @@ class ScreenFactory {
           builder: (context, state) {
             //TODO state like enums
             if (state is NewsScreenState) {
-              //context.go('/news', extra: state.news);
+              return NewsScreen(state.newsContainer.news,);
+            }
+            return Container();
+          },
+        ),
+      ),
+    );
+  }
+  Widget openNews() {
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => NewsBloc(NewsScreenState.inital())..add(OpenNews()),
+        child: BlocBuilder<NewsBloc, NewsScreenState>(
+          buildWhen: (preState, currState) => currState is NewsScreenState,
+          builder: (context, state) {
+            //TODO state like enums
+            if (state is NewsScreenState) {
               return NewsScreen(state.newsContainer.news,);
             }
             return Container();
