@@ -1,12 +1,8 @@
-
-
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
 
 class CardScreen extends StatelessWidget {
-  const CardScreen( {Key? key})
-      : super(key: key);
-
+  const CardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +12,6 @@ class CardScreen extends StatelessWidget {
 
 class CardView extends StatefulWidget {
   CardView({Key? key}) : super(key: key);
-
 
   @override
   CardViewState createState() => CardViewState();
@@ -31,58 +26,55 @@ class CardViewState extends State<CardView> {
   @override
   Widget build(BuildContext context) {
     print('build $context');
-    return SafeArea(child:
-      SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom:
-                        BorderSide(color: Theme.of(context).dividerColor)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Карта',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 17.0, horizontal: 17),
-                    child: Text(
-                      'Ваша карта',
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ),
-                ),
-                cardBarcode(),
-                SizedBox(
-                  height: 60,
-                ),
-              ],
+    return SafeArea(
+        child: SingleChildScrollView(
+      physics: AlwaysScrollableScrollPhysics(),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ElevatedButton(
+              onPressed: () => context.go('/card/theme'), child: Text('push')),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: Theme.of(context).dividerColor)),
             ),
-          ));
-
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Карта',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 17.0, horizontal: 17),
+              child: Text(
+                'Ваша карта',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            ),
+          ),
+          cardBarcode(),
+          const SizedBox(
+            height: 60,
+          ),
+        ],
+      ),
+    ));
   }
 
   Widget bonusesDiscount() {
     return Container(
       height: 150,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(16), bottomLeft: Radius.circular(16)),
         //color: Colors.white,
@@ -95,7 +87,7 @@ class CardViewState extends State<CardView> {
               flex: 7,
               child: Container(
                 height: 105,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: Color.fromRGBO(119, 177, 44, 1),
                 ),
@@ -113,7 +105,7 @@ class CardViewState extends State<CardView> {
                             'Ваша скидка',
                             style: textOnBonuses(),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.info_outline,
                             color: Colors.white,
                           ),
@@ -128,37 +120,9 @@ class CardViewState extends State<CardView> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 17,
             ),
-            // Expanded(
-            //   flex: 3,
-            //   child: Container(
-            //     height: 116.h,
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.all(Radius.circular(8)),
-            //       color: Color.fromRGBO(119, 177, 44, 1),
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.symmetric(
-            //           horizontal: 16.0, vertical: 16),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Text(
-            //             'Скидка',
-            //             style: textOnBonuses(),
-            //           ),
-            //           Text(
-            //             '${(clientInfo!.currentSale).round()}%',
-            //             style: numbers(),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -169,7 +133,7 @@ class CardViewState extends State<CardView> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17),
       child: Card(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -183,21 +147,19 @@ class CardViewState extends State<CardView> {
                   Container(
                     width: 121,
                     height: 38,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(20)),
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: Color.fromRGBO(254, 200, 75, 1)),
-                    child: Center(
+                    child: const Center(
                         child: Text(
-                          'Сотрудник',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600),
-                        )),
+                      'Сотрудник',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                    )),
                   )
-
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 39,
               ),
             ],
@@ -207,12 +169,10 @@ class CardViewState extends State<CardView> {
     );
   }
 
-
-
   Widget infoEmployee() {
     return TextButton(
         onPressed: () async {},
-        child: Text(
+        child: const Text(
           'Условия программы лояльности',
           style: TextStyle(color: Colors.black54),
         ));
@@ -222,7 +182,7 @@ class CardViewState extends State<CardView> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             color: Color.fromRGBO(247, 191, 76, 1)),
         child: Padding(
@@ -232,12 +192,12 @@ class CardViewState extends State<CardView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Лимит покупки на месяц',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Text(
                         '10 р.',
                         style: TextStyle(
@@ -254,30 +214,27 @@ class CardViewState extends State<CardView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text(
                       'Потраченор.',
                       style: TextStyle(
-                          color: Color.fromRGBO(113, 79, 8, 1),
-                          fontSize: 15),
+                          color: Color.fromRGBO(113, 79, 8, 1), fontSize: 15),
                     ),
                     Text(
                       'Осталось р.',
                       style: TextStyle(
-                          color: Color.fromRGBO(113, 79, 8, 1),
-                          fontSize: 15),
+                          color: Color.fromRGBO(113, 79, 8, 1), fontSize: 15),
                     ),
                   ],
                 ),
               ),
-
             ],
           ),
         ),
@@ -286,16 +243,14 @@ class CardViewState extends State<CardView> {
   }
 
   TextStyle numbers() {
-    return TextStyle(
-        color: Colors.white, fontSize: 24 , fontWeight: FontWeight.bold);
+    return const TextStyle(
+        color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold);
   }
 
   TextStyle textOnBonuses() {
-    return TextStyle(
+    return const TextStyle(
       color: Colors.white,
-      fontSize: 15 ,
+      fontSize: 15,
     );
   }
 }
-
-

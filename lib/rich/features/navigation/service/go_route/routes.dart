@@ -44,42 +44,62 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 
 final _screenFactory = Get.find<ScreenFactory>();
 
+abstract class AppPath {
+  static const init = '/';
+  static const auth = '/auth';
+  static const home = '/home';
+  static const profile = '/profile';
+  static const news = '/news';
+  static const details = 'details';
+  static const promo = '/promo';
+  static const map = '/map';
+  static const theme = 'theme';
+  static const card = '/card';
+}
+
 // GoRouter configuration
-final router = GoRouter(initialLocation: '/', routes: [
-  GoRoute(
-    path: '/',
-    builder: (context, state) => _screenFactory.makeAuth(),
-  ),
-  ShellRoute(
-      builder: (context, state, child) {
-        return HomePage(child: child);
-      },
-      routes: [
-        GoRoute(
-          path: '/news',
-          builder: (context, state) => _screenFactory.makeNews(),
-        ),
-        GoRoute(
-          path: '/promo',
-          builder: (context, state) => _screenFactory.makePromo(true),
-        ),
-        GoRoute(
-            path: '/open_news',
-            builder: (context, state) => _screenFactory.openNews(),
-            routes: [
-              GoRoute(
-                path: 'details',
-                builder: (context, state) =>
-                    _screenFactory.makeNewsDetails(state.extra),
-              )
-            ]),
-        GoRoute(
-          path: '/card',
-          builder: (context, state) => _screenFactory.makeCard(true),
-        ),
-        GoRoute(
-          path: '/map',
-          builder: (context, state) => _screenFactory.makeMap(),
-        ),
-      ]),
-]);
+class AppRouter {
+  GoRouter router = GoRouter(initialLocation: AppPath.init, routes: [
+    GoRoute(
+      path: AppPath.init,
+      builder: (context, state) => _screenFactory.makeAuth(),
+    ),
+    ShellRoute(
+        builder: (context, state, child) {
+          return HomePage(child: child);
+        },
+        routes: [
+          GoRoute(
+              path: AppPath.news,
+              builder: (context, state) => const MakeNewsViewFactory(),
+              routes: [
+                GoRoute(
+                  path: AppPath.details,
+                  builder: (context, state) =>
+                      _screenFactory.makeNewsDetails(state.extra),
+                ),
+                GoRoute(
+                  path: AppPath.theme,
+                  builder: (context, state) => Text('123'),
+                ),
+              ]),
+          GoRoute(
+            path: AppPath.promo,
+            builder: (context, state) => _screenFactory.makePromo(true),
+          ),
+          GoRoute(
+              path: AppPath.card,
+              builder: (context, state) => _screenFactory.makeCard(true),
+              routes: [
+                GoRoute(
+                  path: AppPath.theme,
+                  builder: (context, state) => Text('123'),
+                ),
+              ]),
+          GoRoute(
+            path: AppPath.map,
+            builder: (context, state) => _screenFactory.makeMap(),
+          ),
+        ]),
+  ]);
+}
