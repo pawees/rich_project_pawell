@@ -11,6 +11,7 @@ class Images {
   static var splash_part_of_logo3 = Image(image:AssetImage('assets/images/dor_logo/Vector (2).png'));
   static var splash_part_of_logo4 = Image(image:AssetImage('assets/images/dor_logo/Vector (3).png'));
   static var splash_part_of_logo5 = Image(image:AssetImage('assets/images/dor_logo/image.png'));
+  static const splash_part_of_logo6 = Image(image:AssetImage('assets/images/dor_logo/flow6.png'));
   ///
 
 

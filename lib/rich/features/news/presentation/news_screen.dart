@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/features/app_bar/presentation/app_bar.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
+import 'package:rich_project_pawell/rich/features/basic_animations/FadedAnimation.dart';
 import 'package:rich_project_pawell/rich/features/news/presentation/bloc/news_bloc.dart';
 import 'package:rich_project_pawell/rich/features/news/presentation/controller/news_screen_controller.dart';
 
@@ -14,7 +15,7 @@ import 'package:get/get.dart';
 class NewsScreen extends StatelessWidget {
   final List<News> news;
 
-  NewsScreen(this.news,  {Key? key}) : super(key: key);
+  NewsScreen(this.news, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,6 @@ class _News extends StatelessWidget {
       Get.put(NewsScreenController(), permanent: false);
 
   final List<News> news;
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,6 @@ class _News extends StatelessWidget {
         ),
       ],
     );
-
   }
 }
 
@@ -90,7 +89,10 @@ class NewsDetails extends StatelessWidget {
       child: Column(
         children: [
           appBar(new_item.title),
-          ElevatedButton(onPressed: () => context.pop(), child: Text('Back')),
+          FadedAnimationWidget(
+            child: ElevatedButton(
+                onPressed: () => context.pop(), child: Text('Back')),
+          ),
           _image_builder(new_item),
           _text_builder(new_item),
         ],

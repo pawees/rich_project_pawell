@@ -1,4 +1,4 @@
-String greeting_splash = 'Добро пожаловать!';
+String greeting_splash = '"Flow" (англ.) — поток, прилив, течение.';
 
 ///nav_bar_labels
 String nb_news = 'Новости';

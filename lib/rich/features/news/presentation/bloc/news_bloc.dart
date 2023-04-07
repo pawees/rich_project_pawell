@@ -36,7 +36,11 @@ class NewsListContainer {
 
   static Future<NewsListContainer> cache() async {
     if (__cacheContainers.isEmpty) {
-      return NewsListContainer(currentPage: 0, news: await _news_service.getNews(),);
+        var newContainer =
+        NewsListContainer(news: await _news_service.getNews()?? [], currentPage: 0);
+          __cacheContainers.add(newContainer);
+
+      return NewsListContainer(currentPage: 0, news: newContainer.news,);
     } else {
       return __cacheContainers[0];
     }

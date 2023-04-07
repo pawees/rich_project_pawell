@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rich_project_pawell/rich/features/splash_screen/presentation/splash_screen.dart';
+import '../features/basic_animations/FadedAnimation.dart';
 import '../features/card/presentation/card_screen.dart';
 import '../features/error/presentation/pages/ErrorScreen.dart';
 import '../features/map/presentation/MapScreen.dart';
@@ -43,24 +44,7 @@ class ScreenFactory {
   }
 
   Widget makeNews() {
-    //return BlocStyleWidged(inside him code below)
-
-    // return Scaffold(
-    //   body: BlocProvider(
-    //     create: (context) => NewsBloc(NewsScreenState.inital())..add(InitNews()),
-    //     child: BlocBuilder<NewsBloc, NewsScreenState>(
-    //       //buildWhen: (preState, currState) => currState is NewsScreenState,
-    //       builder: (context, state) {
-    //         //TODO state like enums
-    //         if (state is NewsScreenState) {
-    //           return NewsScreen(state.newsContainer.news,);
-    //         }
-    //         return Container();
-    //       },
-    //     ),
-    //   ),
-    // );
-    return MakeNewsViewFactory();
+    return const  MakeNewsViewFactory();
   }
 
   Widget openNews() {
@@ -94,10 +78,9 @@ class ScreenFactory {
             //TODO state like enums
             if (state is NewsScreenState) {
               //context.go('/news', extra: state.news);
-              return MyStatefulWidget(
-                  child: NewsDetails(
+              return NewsDetails(
                 state.oneNew,
-              ));
+              );
             }
             return Container();
           },
@@ -139,7 +122,7 @@ class ScreenFactory {
   }
 
   Widget makeMap() {
-    return MyStatefulWidget(child: MapScreen());
+    return const FadedAnimationWidget(child: MapScreen());
   }
 }
 
@@ -148,7 +131,8 @@ class MakeNewsViewFactory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return Scaffold(
+        body: BlocProvider(
       create: (context) => NewsBloc(NewsScreenState.inital())..add(InitNews()),
       child: BlocBuilder<NewsBloc, NewsScreenState>(
         buildWhen: (preState, currState) =>
@@ -165,15 +149,12 @@ class MakeNewsViewFactory extends StatelessWidget {
             case GetAllRequestStatus.error:
               return ErrorScreen(
                 onTryAgainPressed: () {
-                  context
-                      .read<NewsBloc>()
-                      .add(InitNews());
+                  context.read<NewsBloc>().add(InitNews());
                 },
               );
           }
         },
       ),
-    );
+    ));
   }
 }
-
