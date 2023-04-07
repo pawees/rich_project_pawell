@@ -149,7 +149,7 @@ class MakeNewsViewFactory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NewsBloc(NewsScreenState.inital())..add(InitNews()),
+      create: (context) => NewsBloc(NewsScreenState.inital()),
       child: BlocBuilder<NewsBloc, NewsScreenState>(
         buildWhen: (preState, currState) =>
             currState.status == GetAllRequestStatus.loaded ||

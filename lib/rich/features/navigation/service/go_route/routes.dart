@@ -57,6 +57,12 @@ abstract class AppPath {
   static const card = '/card';
 }
 
+abstract class ExceptionPath {
+  ///in this case bottomNavBar is not rendered
+  static const fromCardTheme = '/card/theme';
+  static const fromNewsTheme = '/news/theme';
+}
+
 // GoRouter configuration
 class AppRouter {
   GoRouter router = GoRouter(initialLocation: AppPath.init, routes: [
@@ -66,7 +72,10 @@ class AppRouter {
     ),
     ShellRoute(
         builder: (context, state, child) {
-          return HomePage(child: child);
+          return Wrapper(
+            state: state.location,
+            child: child,
+          );
         },
         routes: [
           GoRoute(
@@ -80,7 +89,7 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: AppPath.theme,
-                  builder: (context, state) => Text('123'),
+                  builder: (context, state) => Center(child:Text('HeLLo',style: TextStyle(color: Color(0xFF7b60c4)),)),
                 ),
               ]),
           GoRoute(
@@ -102,4 +111,23 @@ class AppRouter {
           ),
         ]),
   ]);
+}
+
+class Wrapper extends StatelessWidget {
+  const Wrapper({required this.state, required this.child, Key? key})
+      : super(key: key);
+  final String? state;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (state) {
+      case ExceptionPath.fromCardTheme:
+        return HomePage(child: child, bottomNavigation: false);
+      case ExceptionPath.fromNewsTheme:
+        return HomePage(child: child, bottomNavigation: false);
+      default:
+        return HomePage(child: child, bottomNavigation: true);
+    }
+  }
 }

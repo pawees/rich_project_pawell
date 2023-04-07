@@ -13,7 +13,9 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme
+        .of(context)
+        .textTheme;
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -49,7 +51,9 @@ class ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme
+        .of(context)
+        .textTheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -69,3 +73,4 @@ class ErrorText extends StatelessWidget {
     );
   }
 }
+
