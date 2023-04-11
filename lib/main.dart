@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
 import 'package:rich_project_pawell/rich/core/theme/theme.dart';
 import 'package:rich_project_pawell/rich/domain/di_container.dart';
@@ -21,7 +22,16 @@ class AppBuilder extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
         SizeConfig().init(constraints, orientation);
-        return MyApp();
+        return  ScreenUtilInit(
+          designSize: Size(constraints.maxWidth, constraints.maxHeight),
+          minTextAdapt: true,
+          //scaleByHeight: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return MyApp();
+          }
+
+        );
       });
     });
   }
@@ -36,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'The Flow',
       theme: MyAppTheme.themeLight,
       darkTheme: MyAppTheme.themeDark,
       themeMode: ThemeMode.system,

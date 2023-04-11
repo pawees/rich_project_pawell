@@ -5,7 +5,6 @@ import '../../../home/presentation/HomePage.dart';
 
 import 'package:flutter/material.dart';
 
-
 final _screenFactory = Get.find<ScreenFactory>();
 
 abstract class AppPath {
@@ -23,8 +22,11 @@ abstract class AppPath {
 
 abstract class ExceptionPath {
   ///in this case bottomNavBar is not rendered
-  static List<String> exceptions = ['/card/theme','/news/theme','/news/details'];
-
+  static List<String> exceptions = [
+    '/card/theme',
+    '/news/theme',
+    '/news/details'
+  ];
 }
 
 // GoRouter configuration
@@ -36,15 +38,17 @@ class AppRouter {
     ),
     ShellRoute(
         builder: (context, state, child) {
-          return Wrapper(
-            state: state.location,
-            child: child,
-          );
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: Wrapper(
+                state: state.location,
+                child: child,
+              ));
         },
         routes: [
           GoRoute(
               path: AppPath.news,
-              builder: (context, state) => _screenFactory.makeNews(),//
+              builder: (context, state) => _screenFactory.makeNews(), //
               routes: [
                 GoRoute(
                   path: AppPath.details,
@@ -53,7 +57,12 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: AppPath.theme,
-                  builder: (context, state) => Scaffold(body: Center(child:Text('HeLLo\nHELLO\n\nhiii',style: TextStyle(color: Color(0xFF7b60c4),fontSize: 18),))),
+                  builder: (context, state) => Scaffold(
+                      body: Center(
+                          child: Text(
+                    'HeLLo\nHELLO\n\nhiii',
+                    style: TextStyle(color: Color(0xFF7b60c4), fontSize: 18),
+                  ))),
                 ),
               ]),
           GoRoute(
@@ -66,7 +75,12 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppPath.theme,
-                  builder: (context, state) => Scaffold(body: Center(child:Text('HeLLo\nHELLO\n\nhiii',style: TextStyle(color: Color(0xFF7b60c4),fontSize: 18),))),
+                  builder: (context, state) => Scaffold(
+                      body: Center(
+                          child: Text(
+                    'HeLLo\nHELLO\n\nhiii',
+                    style: TextStyle(color: Color(0xFF7b60c4), fontSize: 18),
+                  ))),
                 ),
               ]),
           GoRoute(
@@ -85,9 +99,9 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(ExceptionPath.exceptions.contains(state)){
+    if (ExceptionPath.exceptions.contains(state)) {
       return HomePage(child: child, bottomNavigation: false);
-    }else{
+    } else {
       return HomePage(child: child, bottomNavigation: true);
     }
   }

@@ -33,10 +33,4 @@ class NewsScreenController extends GetxController {
     debugPrint((_offset.value).toString());
     _offset.value = offset;
 
-    ///this is worker callback trigered by change obs variable,in this case it is _offset
-    //ever(_offset, (_) => fire());
   }
-// fire() {
-//   print('oololol');
-// }
-}

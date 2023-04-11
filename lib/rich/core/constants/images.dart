@@ -18,13 +18,12 @@ class Images {
   ///nav_bar logo's
   static var nav_bar_news = SvgPicture.asset('assets/images/dor_nav_bar_png/logo.svg', width: SizeConfig.iconSizeSvg,height: SizeConfig.iconSizeSvg);
   static var nav_bar_promo = SvgPicture.asset('assets/images/dor_nav_bar_png/video-svgrepo-com.svg', width: SizeConfig.iconSizeSvg);
-  static var nav_bar_card = SvgPicture.asset('assets/images/dor_nav_bar_png/cd-svgrepo-com.svg', width: SizeConfig.iconSizeSvg);
+  static var nav_bar_card = SvgPicture.asset('assets/images/dor_nav_bar_png/card.svg', width: SizeConfig.iconSizeSvg);
   static var nav_bar_map = SvgPicture.asset('assets/images/dor_nav_bar_png/reading-mode-mobile-svgrepo-com.svg', width: SizeConfig.iconSizeSvg);
   static var nav_bar_catalog = Image.asset('assets/images/dor_nav_bar_png/new-flow-icon.png', width: 225,);
   static var nav_bar_profiile = SvgPicture.asset('assets/images/dor_nav_bar_png/profile.svg', width: SizeConfig.iconSizeSvg);
 
   ///
-
 
   ///error
   static var error = SvgPicture.asset('assets/images/dor_nav_bar_png/cloud-error-internet-data-network-sync-reject-svgrepo-com.svg',              width: double.infinity,

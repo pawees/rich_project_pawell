@@ -32,10 +32,7 @@ google-services.json
 .dart_tool/package_config_subset
 .dart_tool/version
 .flutter-plugins
-.flutter-plugins-dependencies
 .dart_tool/flutter_build
-
-.flutter-plugins-dependencies
-.dart_tool/package_config_subset
 *.json
-.flutter-plugins-dependencies
+
+

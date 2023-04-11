@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
 import 'package:rich_project_pawell/rich/features/app_bar/presentation/app_bar.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
 import 'package:rich_project_pawell/rich/features/basic_animations/FadedAnimation.dart';
@@ -23,8 +25,11 @@ class NewsScreen extends StatelessWidget {
     final txtTheme = Theme.of(context).textTheme;
 
     return SafeArea(
-      child: _News(
-        news,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: _News(
+          news,
+        ),
       ),
     );
   }
@@ -65,7 +70,10 @@ class _News extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (context, index) => CardNews(index, news),
+            (context, index) => Padding(
+              padding: EdgeInsets.all(SizeConfig.newsSize),
+              child: CardNews(index, news),
+            ),
             childCount: news.length,
           ),
         ),
@@ -174,17 +182,21 @@ class CardContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${news[index].title}',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+            news[index].title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 17.sp,
+            ),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 4,
           ),
+          //Need_TEXT_WRAPPER
           Text(
-            '${news[index].text}',
-            style: TextStyle(fontSize: 15),
+            news[index].text,
+            style: TextStyle(fontSize: 15.sp),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),

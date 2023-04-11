@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/sizes.dart';
 import '../../navigation_bar/presentation/navigation_bar_screen.dart';
 
 
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   final Widget child;
   final bool bottomNavigation;
+  static get navigator => SizedBox(height: SizeConfig.bottomNavSize, child: BottomNavigation(),);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class HomePage extends StatelessWidget {
       case true:
         return Scaffold(
           body: child,
-          bottomNavigationBar: BottomNavigation(),
+          bottomNavigationBar: HomePage.navigator,
         );
       case false:
         return Scaffold(
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
       default:
         return Scaffold(
           body: child,
-          bottomNavigationBar: BottomNavigation(),
+          bottomNavigationBar: HomePage.navigator,
         );
     }
     return Scaffold(
