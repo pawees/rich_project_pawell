@@ -218,6 +218,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_screenutil",
+      "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_screenutil-5.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///Users/pavell/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-1.1.6",
       "packageUri": "lib/",
@@ -674,7 +680,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-03-24T16:08:07.687106Z",
+  "generated": "2023-04-10T12:19:39.983924Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

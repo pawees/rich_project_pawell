@@ -5,10 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:meta/meta.dart';
-import 'package:rich_project_pawell/rich/features/auth/domain/entities/session.dart';
-import 'package:rich_project_pawell/rich/features/auth/domain/enums/auth_status.dart';
 import '../../../auth/service/auth_service_impl.dart';
-import '../../../navigation/domain/entity/main_navigation_route_names.dart';
+
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -30,11 +28,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> checkAuth(Emitter<AuthState> emit) async {
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
 
     await _auth_service.checkAuth();
 
-    emit(CheckAuthState(MainNavigationRouteNames.home));
+    emit(CheckAuthState());
 
 
   }

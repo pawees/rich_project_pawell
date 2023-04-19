@@ -13,6 +13,15 @@ class NewsApiMock implements INewsApi {
 
 
   List<String> urls = [
+
+    'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/08/78/84/74/58/0f78a3540cd7.jpeg',
+    'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/09/77/84/69/83/eeecf6940cd7.jpg',
+    'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/16/07/98/23/70/2dc4fcf40cd7.jpg',
+    'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/13/47/78/87/76/ebd36a140cd7.jpg',
+    'https://the-flow.ru/uploads/images/catalog/element/642e9b7b80552.jpg',
+    'https://the-flow.ru/uploads/images/catalog/element/642eae08270c2.jpg',
+    'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/04/61/37/32/00/c34fce840cd7.jpg',
+
     'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/00/92/70/98/23/791662140cd7.jpg',
     'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/12/99/69/72/13/df8f96b40cd7.jpeg',
     'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/07/47/32/88/14/490462940cd7.jpeg',
@@ -39,7 +48,14 @@ class NewsApiMock implements INewsApi {
     'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/11/96/05/95/97/8c9167d40cd7.jpg',
   ];
 
-  List<String> titles = ['ASAP Rocky выпустил трек "Same Problems?"',
+  List<String> titles = [
+    'Съемки продолжения "Джокера" закончены',
+    'В стране, как у Ким Чен Ына, все под колпаком" — Slimus выдал новый куплет',
+    'Tyler, The Creator выпустил клип "Hot Wind Blows"',
+    'У Tyler, the Creator вышел клип “Wharf Talk” с участием A\\\$AP Rocky',
+    'Lola Brooke, Latto и Yung Miami выпустили клип "Dont Play With It"',
+
+    'ASAP Rocky выпустил трек "Same Problems?"',
     'РКН назвал критерии ЛГБТ-пропагады в интернете',
     'Jamie xx заканчивает работу над новым альбомом',
     'Фейсбук* и инстаграм* разрешат показывать женские соски',
@@ -58,7 +74,14 @@ class NewsApiMock implements INewsApi {
     'Каспийский Груз вернулся с мини-альбомом "Осторожно окрашено"',
   ];
 
-  List<String> texts = ['Сингл с альбома "Don’t Be Dumb", который все ждут в этом году.',
+  List<String> texts = [
+    'Сальтухи Газманова за бюджетные бабки, разговорчивый Пригожин — панчлайны пишутся по мотивам последних новостей.',
+    'Режиссер опубликовал 2 новых фото с персонажами',
+    'Составил его из кадров своих поездок по Европе',
+    '1001 идея для вашего свидания.',
+    'Три хозяйки большого кабана с ремиксом на один из главных хитов бруклин-дрилла 2021 года.',
+
+    'Сингл с альбома "Don’t Be Dumb", который все ждут в этом году.',
     'А еще составил список запрещенных фильмов и сериалов, там — "Горбатая гора" и "Назови меня своим именем".',
     'Рэпер вбил в поиске ютуба "J. Cole type beat" и наткнулся на бит продюсера Bvtman — так и получился трек.',
     'Активисты боролись за это право много лет.',
@@ -86,7 +109,7 @@ class NewsApiMock implements INewsApi {
     _generateNews() {
       return News(id: 1, title: _getRandom(titles), text: _getRandom(texts), imageUrl: _getRandom(urls));
     }
-    final news = List<News>.generate(40, (int index) => _generateNews());
+    final news = List<News>.generate(30, (int index) => _generateNews());
     return news;
 
   }

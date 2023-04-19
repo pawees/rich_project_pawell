@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rich_project_pawell/rich/core/constants/sizes.dart';
 import 'package:rich_project_pawell/rich/features/app_bar/presentation/app_bar.dart';
 import 'package:rich_project_pawell/rich/core/constants/texts.dart';
+import 'package:rich_project_pawell/rich/features/basic_animations/FadedAnimation.dart';
+import 'package:rich_project_pawell/rich/features/news/presentation/bloc/news_bloc.dart';
 import 'package:rich_project_pawell/rich/features/news/presentation/controller/news_screen_controller.dart';
 
 import '../../shimmer_image/presentation/shimmer_image.dart';
@@ -12,7 +17,7 @@ import 'package:get/get.dart';
 class NewsScreen extends StatelessWidget {
   final List<News> news;
 
-  const NewsScreen(this.news, {Key? key}) : super(key: key);
+  NewsScreen(this.news, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +25,17 @@ class NewsScreen extends StatelessWidget {
     final txtTheme = Theme.of(context).textTheme;
 
     return SafeArea(
-          child:
-              _News(news, ),
-
-
-        );
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: _News(
+          news,
+        ),
+      ),
+    );
   }
 }
 
-class _News extends GetView<NewsScreenController> {
+class _News extends StatelessWidget {
   _News(this.news, {Key? key}) : super(key: key);
 
   final NewsScreenController newsScreenController =
@@ -36,37 +43,42 @@ class _News extends GetView<NewsScreenController> {
 
   final List<News> news;
 
-
   @override
   Widget build(BuildContext context) {
-    ScrollController scrol = newsScreenController.getController();
-    newsScreenController.addListenersss(scrol);
+    ScrollController controller = newsScreenController.initialController();
 
     return CustomScrollView(
-        key: PageStorageKey(0),
-        controller: scrol,
-        slivers: [
-          //SliverAppBar(),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => CardNews(index, news),
-              childCount: newsScreenController.news_lenght.value,
-            ),
+      controller: controller,
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          title: appBar(news_title),
+          flexibleSpace: appBar(news_title),
+        ),
+        SliverToBoxAdapter(
+          child: ElevatedButton(
+              onPressed: () => context.go('/news/theme'), child: Text('push')),
+        ),
+        SliverToBoxAdapter(
+          child: IconButton(
+            icon: const Icon(Icons.error_outline_sharp),
+            tooltip: 'cause error',
+            onPressed: () {
+              BlocProvider.of<NewsBloc>(context).add(InitError());
+            },
           ),
-        ],
-      );
-
-    // return ListView.builder(
-    //   controller: ScrollController(initialScrollOffset: 830),
-    //   padding: const EdgeInsets.all(17),
-    //   shrinkWrap: true,
-    //   physics: NeverScrollableScrollPhysics(),
-    //   scrollDirection: Axis.vertical,
-    //   itemCount: news.length,
-    //   itemBuilder: (BuildContext ctx, int index) {
-    //     return CardNews(index, news,);
-    //   },
-    // );
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => Padding(
+              padding: EdgeInsets.all(SizeConfig.newsSize),
+              child: CardNews(index, news),
+            ),
+            childCount: news.length,
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -85,6 +97,10 @@ class NewsDetails extends StatelessWidget {
       child: Column(
         children: [
           appBar(new_item.title),
+          FadedAnimationWidget(
+            child: ElevatedButton(
+                onPressed: () => context.pop(), child: Text('Back')),
+          ),
           _image_builder(new_item),
           _text_builder(new_item),
         ],
@@ -128,7 +144,7 @@ class CardNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/open_news/details', extra: index);
+        context.go('/news/details', extra: index);
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -136,7 +152,9 @@ class CardNews extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(child: Text('$index'),),
+            Center(
+              child: Text('$index'),
+            ),
             ShimmerImage(
               aspectRatio: 1.785,
               borderRadius: BorderRadius.circular(8),
@@ -164,17 +182,21 @@ class CardContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${news[index].title}',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+            news[index].title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 17.sp,
+            ),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 4,
           ),
+          //Need_TEXT_WRAPPER
           Text(
-            '${news[index].text}',
-            style: TextStyle(fontSize: 15),
+            news[index].text,
+            style: TextStyle(fontSize: 15.sp),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),

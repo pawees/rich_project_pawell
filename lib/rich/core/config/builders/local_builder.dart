@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'mocked data',
       theme: MyAppTheme.themeLight,
-      routerConfig: router,
+      routerConfig: AppRouter().router,
     );
   }
 }

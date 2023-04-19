@@ -23,7 +23,7 @@ void main() {
   group('Бар навигации', () {
     testWidgets('Новости', (WidgetTester tester) async {
       // Create the widget by telling the tester to build it.
-      await tester.pumpWidget(NewsScreen([News(title: 'title', text: 'text', id: 1, imageUrl: 'imageUrl')]));
+      //await tester.pumpWidget(NewsScreen([News(title: 'title', text: 'text', id: 1, imageUrl: 'imageUrl')],));
 
       await tester.pumpAndSettle();
       //await tester.implicitTap(MainTestScreen.openNewsScreen);

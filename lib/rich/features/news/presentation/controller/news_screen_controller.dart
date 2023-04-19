@@ -6,38 +6,31 @@ import '../../domain/entities/news.dart';
 import '../../domain/i_news_repository.dart';
 
 class NewsScreenController extends GetxController {
-  //this is constructor?
-  static final _news_service = Get.find<INewsRepository>();
 
+  RxDouble _offset = 0.0.obs;
 
-  double _offset = 0.0;
-  late ScrollController scrollContr;
-  var news_lenght = 0.obs;
-
+  ///can use instead constructor init first time
   @override
-  void onInit() async {
-    List<News> n = await _news_service.getNews();
-    news_lenght.value = n.length;
+  void onInit() {
     super.onInit();
   }
 
-  saveScrollOffset(offset) {
-    print('!!!!!!!!!!!!!!!!!!');
-    _offset = offset;
-
+  initialController() {
+    ScrollController scrollContr = ScrollController(
+      initialScrollOffset: _offset.value,
+    );
+    startListen(scrollContr);
+    return scrollContr;
   }
 
-  ScrollController getController() =>
-      scrollContr = ScrollController(initialScrollOffset: _offset,);
-
-
-
-  void addListenersss(scr) {
+  void startListen(scr) {
     scr.addListener(() {
-      saveScrollOffset(scrollContr.offset);
+      saveScrollOffset(scr.offset);
     });
   }
 
+  void saveScrollOffset(offset) {
+    debugPrint((_offset.value).toString());
+    _offset.value = offset;
 
-
-}
+  }

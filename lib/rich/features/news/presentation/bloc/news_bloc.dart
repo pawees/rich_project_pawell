@@ -6,15 +6,13 @@ import 'package:meta/meta.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 
 import '../../domain/entities/news.dart';
+import '../../domain/enums/enums.dart';
 import '../../domain/i_news_repository.dart';
 import 'dart:math';
-
 
 part 'news_event.dart';
 
 part 'news_state.dart';
-
-
 
 class NewsListContainer {
   final List<News> news;
@@ -27,63 +25,73 @@ class NewsListContainer {
       : news = const <News>[],
         currentPage = 0;
 
-
   NewsListContainer copyWith({
     List<News>? news,
     int? currentPage,
   }) {
-    return NewsListContainer(news: news ?? [],currentPage: currentPage ?? this.currentPage);
+    return NewsListContainer(
+        news: news ?? [], currentPage: currentPage ?? this.currentPage);
   }
+  static final _news_service = Get.find<INewsRepository>();
 
-  factory NewsListContainer.cache() {
+  static Future<NewsListContainer> cache() async {
+    if (__cacheContainers.isEmpty) {
+        var newContainer =
+        NewsListContainer(news: await _news_service.getNews()?? [], currentPage: 0);
+          __cacheContainers.add(newContainer);
+
+      return NewsListContainer(currentPage: 0, news: newContainer.news,);
+    } else {
       return __cacheContainers[0];
+    }
   }
 
-  factory NewsListContainer.newContainer(
-      List<News>? news,
-      int? currentPage,) {
-    var new_container = NewsListContainer(news: news ?? [],currentPage: currentPage ?? 0);
-    __cacheContainers.add(new_container);
-    return new_container;
-
-  }
+  // static Future<NewsListContainer> newContainer(
+  //
+  //     ) async {
+  //   var newContainer =
+  //   NewsListContainer(news: await _news_service.getNews()?? [], currentPage: 0);
+  //     __cacheContainers.add(newContainer);
+  //     return newContainer;
+  //
+  //
+  // }
 
 }
 
-
 class NewsBloc extends Bloc<NewsEvent, NewsScreenState> {
 
-  static final _news_service = Get.find<INewsRepository>();
-
-  NewsBloc( NewsScreenState initialState) : super(initialState) {
+  NewsBloc(NewsScreenState initialState) : super(initialState) {
     on<NewsEvent>((event, emit) async {
-      if (event is InitNews) _initNews(event,emit);
-      if (event is OpenNews) _openNews(event,emit);
-      if (event is DetailsNews) _detailsNews(event,emit);
+      if (event is InitNews) _initNews(event, emit);
+      if (event is DetailsNews) _detailsNews(event, emit);
+      if (event is InitError) _initError(event, emit);
 
       // TODO: implement event handler
-    }, transformer: restartable() );
-
+    }, transformer: restartable());
   }
 
   Future<void> _initNews(InitNews event, Emitter<NewsScreenState> emit) async {
-    final containerNews = NewsListContainer.newContainer(await _news_service.getNews(),1);
-    final newState = state.copyWith(newsContainer: containerNews);
+    final containerNews = await
+        NewsListContainer.cache();
+    final newState = state.copyWith(
+        newsContainer: containerNews, status: GetAllRequestStatus.loaded);
     emit(newState);
   }
 
-  Future<void> _openNews(OpenNews event, Emitter<NewsScreenState> emit) async {
-    final containerNews = NewsListContainer.cache();
-    final newState = state.copyWith(newsContainer: containerNews);
+  Future<void> _initError(
+      InitError event, Emitter<NewsScreenState> emit) async {
+    final containerNews = await
+        NewsListContainer.cache();
+    final newState = state.copyWith(
+        newsContainer: containerNews, status: GetAllRequestStatus.error);
     emit(newState);
   }
 
-  Future<void> _detailsNews(DetailsNews event, Emitter<NewsScreenState> emit) async {
-    final containerNews = NewsListContainer.cache();
+  Future<void> _detailsNews(
+      DetailsNews event, Emitter<NewsScreenState> emit) async {
+    final containerNews = await NewsListContainer.cache();
     final oneNew = containerNews.news[event.id];
     emit(state.copyWith(oneNew: oneNew));
-
   }
-
-
 }

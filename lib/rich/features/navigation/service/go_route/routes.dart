@@ -5,81 +5,104 @@ import '../../../home/presentation/HomePage.dart';
 
 import 'package:flutter/material.dart';
 
-class MyStatefulWidget extends StatefulWidget {
-  final Widget child;
+final _screenFactory = Get.find<ScreenFactory>();
 
-  const MyStatefulWidget({super.key, required this.child});
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+abstract class AppPath {
+  static const init = '/';
+  static const auth = '/auth';
+  static const home = '/home';
+  static const profile = '/profile';
+  static const news = '/news';
+  static const details = 'details';
+  static const promo = '/promo';
+  static const map = '/map';
+  static const theme = 'theme';
+  static const card = '/card';
 }
 
-/// [AnimationController]s can be created with `vsync: this` because of
-/// [TickerProviderStateMixin].
-class _MyStatefulWidgetState extends State<MyStatefulWidget>
-    with TickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 1400),
-    vsync: this,
-  )..repeat(reverse: true);
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
-    curve: Curves.slowMiddle,
-  );
+abstract class ExceptionPath {
+  ///in this case bottomNavBar is not rendered
+  static List<String> exceptions = [
+    '/card/theme',
+    '/news/theme',
+    '/news/details'
+  ];
+}
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+// GoRouter configuration
+class AppRouter {
+  GoRouter router = GoRouter(initialLocation: AppPath.init, routes: [
+    GoRoute(
+      path: AppPath.init,
+      builder: (context, state) => _screenFactory.makeAuth(),
+    ),
+    ShellRoute(
+        builder: (context, state, child) {
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: Wrapper(
+                state: state.location,
+                child: child,
+              ));
+        },
+        routes: [
+          GoRoute(
+              path: AppPath.news,
+              builder: (context, state) => _screenFactory.makeNews(), //
+              routes: [
+                GoRoute(
+                  path: AppPath.details,
+                  builder: (context, state) =>
+                      _screenFactory.makeNewsDetails(state.extra),
+                ),
+                GoRoute(
+                  path: AppPath.theme,
+                  builder: (context, state) => Scaffold(
+                      body: Center(
+                          child: Text(
+                    'HeLLo\nHELLO\n\nhiii',
+                    style: TextStyle(color: Color(0xFF7b60c4), fontSize: 18),
+                  ))),
+                ),
+              ]),
+          GoRoute(
+            path: AppPath.promo,
+            builder: (context, state) => _screenFactory.makePromo(true),
+          ),
+          GoRoute(
+              path: AppPath.card,
+              builder: (context, state) => _screenFactory.makeCard(true),
+              routes: [
+                GoRoute(
+                  path: AppPath.theme,
+                  builder: (context, state) => Scaffold(
+                      body: Center(
+                          child: Text(
+                    'HeLLo\nHELLO\n\nhiii',
+                    style: TextStyle(color: Color(0xFF7b60c4), fontSize: 18),
+                  ))),
+                ),
+              ]),
+          GoRoute(
+            path: AppPath.map,
+            builder: (context, state) => _screenFactory.makeMap(),
+          ),
+        ]),
+  ]);
+}
+
+class Wrapper extends StatelessWidget {
+  const Wrapper({required this.state, required this.child, Key? key})
+      : super(key: key);
+  final String? state;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      child: widget.child,
-    );
+    if (ExceptionPath.exceptions.contains(state)) {
+      return HomePage(child: child, bottomNavigation: false);
+    } else {
+      return HomePage(child: child, bottomNavigation: true);
+    }
   }
 }
-
-final _screenFactory = Get.find<ScreenFactory>();
-
-// GoRouter configuration
-final router = GoRouter(initialLocation: '/', routes: [
-  GoRoute(
-    path: '/',
-    builder: (context, state) => _screenFactory.makeAuth(),
-  ),
-  ShellRoute(
-      builder: (context, state, child) {
-        return HomePage(child: child);
-      },
-      routes: [
-        GoRoute(
-          path: '/news',
-          builder: (context, state) => _screenFactory.makeNews(),
-        ),
-        GoRoute(
-          path: '/promo',
-          builder: (context, state) => _screenFactory.makePromo(true),
-        ),
-        GoRoute(
-            path: '/open_news',
-            builder: (context, state) => _screenFactory.openNews(),
-            routes: [
-              GoRoute(
-                path: 'details',
-                builder: (context, state) =>
-                    _screenFactory.makeNewsDetails(state.extra),
-              )
-            ]),
-        GoRoute(
-          path: '/card',
-          builder: (context, state) => _screenFactory.makeCard(true),
-        ),
-        GoRoute(
-          path: '/map',
-          builder: (context, state) => _screenFactory.makeMap(),
-        ),
-      ]),
-]);

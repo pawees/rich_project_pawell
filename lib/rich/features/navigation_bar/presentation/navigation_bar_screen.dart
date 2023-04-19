@@ -29,7 +29,7 @@ class BottomNavigation extends StatelessWidget {
         navigatorBarController.tabIndex.value = value;
         switch (navigatorBarController.tabIndex.value) {
           case 0:
-            context.go('/open_news');
+            context.go('/news');
             break;
           case 1:
             context.go('/promo');

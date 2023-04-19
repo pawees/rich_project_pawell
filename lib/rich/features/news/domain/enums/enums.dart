@@ -1,0 +1,1 @@
+enum GetAllRequestStatus {loading, loaded, error,}
