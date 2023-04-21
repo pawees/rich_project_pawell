@@ -32,5 +32,5 @@ class NewsScreenController extends GetxController {
   void saveScrollOffset(offset) {
     debugPrint((_offset.value).toString());
     _offset.value = offset;
-
   }
+}
