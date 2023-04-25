@@ -1,3 +1,4 @@
+import 'package:cloud_messaging_service/cloud_messaging_service.dart';
 import 'package:get/get.dart';
 import 'package:rich_project_pawell/rich/domain/shared_preferences_storage.dart';
 import 'package:rich_project_pawell/rich/features/auth/service/auth_service_impl.dart';
@@ -9,16 +10,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../features/news/domain/i_news_repository.dart';
 import '../features/news/data/repository/news_mock_repository.dart';
 import '../features/news/data/repository/news_repository.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 void inicialAdditionals () {
 
   Get.put<ScreenFactory>(ScreenFactory());
   Get.put<AuthService>(AuthService());
-  //Get.put<PushNotificationService>(PushNotificationService());
+  Get.put<CloudMessagingService>(CloudMessagingService());
   Get.put<SharedPreferencesStorage>(SharedPreferencesStorage());
   Get.put<INewsRepository>(NewsRepo());
   Get.put<INewsApi>(NewsApiJsonRpc());
+  Get.put<CloudMessagingService>(CloudMessagingService());
+
 
 
   ///contants
@@ -34,14 +38,15 @@ void inicialAdditionals () {
   Get.putAsync<SharedPreferences>( () async => await SharedPreferences.getInstance() );
 }
 
-
+//TODO bad style
 void inicialAdditionals_Moke () {
   Get.put<ScreenFactory>(ScreenFactory());
   Get.put<AuthService>(AuthService());
-  //Get.put<PushNotificationService>(PushNotificationService());
   Get.put<SharedPreferencesStorage>(SharedPreferencesStorage());
   Get.put<INewsRepository>(NewsMockRepository());
   Get.put<INewsApi>(NewsApiMock());
+  Get.put<CloudMessagingService>(CloudMessagingService());
+
 
 
   ///contants

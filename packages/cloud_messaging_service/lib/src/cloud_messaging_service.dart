@@ -7,6 +7,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:logger/logger.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+
+
 
 typedef OnMessage = void Function(Map<String, dynamic> message);
 
@@ -36,6 +41,7 @@ class CloudMessagingService {
     description: 'This channel is used for important notifications.',
     importance: Importance.max,
   );
+
 
   Future<String?> get token async {
     final response = await _firebaseMessaging.getToken();
@@ -88,8 +94,17 @@ class CloudMessagingService {
       'notification: ${message.notification?.title}',
     );
   }
+  static Future<String> _downloadAndSaveFile(
+      String url, String fileName) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final String filePath = '${directory.path}/$fileName';
+    final http.Response response = await http.get(Uri.parse(url));
+    final File file = File(filePath);
+    await file.writeAsBytes(response.bodyBytes);
+    return filePath;
+  }
 
-  static void _displayNotificationsAndroid(RemoteMessage message) {
+  static void _displayNotificationsAndroid(RemoteMessage message) async {
     final notification = message.notification;
     final android = message.notification?.android;
 
@@ -97,13 +112,23 @@ class CloudMessagingService {
       return;
     }
 
+
+      final String ImagePath =
+          await _downloadAndSaveFile((notification.android!.imageUrl).toString(), 'largeIcon');
+
+
     final androidNotificationDetails = AndroidNotificationDetails(
       _channel.id,
       _channel.name,
       channelDescription: _channel.description,
-      icon: 'ic_notification',
+      icon: '@mipmap/ic_launcher',
       colorized: true,
       color: const Color(0xFFE07C4F),
+      styleInformation: BigPictureStyleInformation(
+        FilePathAndroidBitmap(ImagePath),
+        contentTitle: notification.title,
+        summaryText: notification.body,
+      ),
     );
     final payload = json.encode(message.data);
 
@@ -140,7 +165,7 @@ class CloudMessagingService {
   void _handleLocalNotificationInteraction() {
     _localNotificationsPlugin.initialize(
       const InitializationSettings(
-        android: AndroidInitializationSettings('ic_notification'),
+        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
       ),
       onSelectNotification: (payload) {
         if (payload == null) return;

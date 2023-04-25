@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import '../../domain/entities/news.dart';
 import '../../domain/i_news_api.dart';
 import '../../domain/i_news_repository.dart';
 
